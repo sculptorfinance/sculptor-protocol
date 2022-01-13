@@ -1,5 +1,4 @@
-// SPDX-License-Identifier: agpl-3.0
-
+// SPDX-License-Identifier: NONE
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
@@ -11,7 +10,6 @@ import "../dependencies/openzeppelin/contracts/Ownable.sol";
 
 import "../interfaces/IMultiFeeDistribution.sol";
 
-
 interface IMintableToken is IERC20 {
     function mint(address _receiver, uint256 _amount) external returns (bool);
     function setMinter(address _minter) external returns (bool);
@@ -19,8 +17,7 @@ interface IMintableToken is IERC20 {
 
 // Based on Ellipsis EPS Staker
 // https://github.com/ellipsis-finance/ellipsis/blob/master/contracts/EpsStaker.sol
-contract MultiFeeDistribution is IMultiFeeDistribution, Ownable, ReentrancyGuard {
-
+contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
     using SafeERC20 for IMintableToken;
@@ -147,16 +144,16 @@ contract MultiFeeDistribution is IMultiFeeDistribution, Ownable, ReentrancyGuard
     }
 
     // Address and claimable amount of all reward tokens for the given account
-    function claimableRewards(address account) external view returns (RewardData[] memory rewardsData) {
-        rewardsData = new RewardData[](rewardTokens.length);
-        for (uint256 i = 0; i < rewardsData.length; i++) {
+    function claimableRewards(address account) external view returns (RewardData[] memory rewards) {
+        rewards = new RewardData[](rewardTokens.length);
+        for (uint256 i = 0; i < rewards.length; i++) {
             // If i == 0 this is the stakingReward, distribution is based on locked balances
             uint256 balance = i == 0 ? balances[account].locked : balances[account].total;
             uint256 supply = i == 0 ? lockedSupply : totalSupply;
-            rewardsData[i].token = rewardTokens[i];
-            rewardsData[i].amount = _earned(account, rewardsData[i].token, balance, supply);
+            rewards[i].token = rewardTokens[i];
+            rewards[i].amount = _earned(account, rewards[i].token, balance, supply);
         }
-        return rewardsData;
+        return rewards;
     }
 
     // Total balance of an account, including unlocked, locked and earned tokens
