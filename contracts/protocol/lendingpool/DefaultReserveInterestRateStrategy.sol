@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity 0.7.6;
 
+import "../../dependencies/openzeppelin/contracts/Ownable.sol";
 import {SafeMath} from '../../dependencies/openzeppelin/contracts/SafeMath.sol';
 import {IReserveInterestRateStrategy} from '../../interfaces/IReserveInterestRateStrategy.sol';
 import {WadRayMath} from '../libraries/math/WadRayMath.sol';
@@ -18,7 +19,7 @@ import {IERC20} from '../../dependencies/openzeppelin/contracts/IERC20.sol';
  *   of the LendingPoolAddressesProvider
  * @author Aave
  **/
-contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
+contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy, Ownable {
   using WadRayMath for uint256;
   using SafeMath for uint256;
   using PercentageMath for uint256;
@@ -37,7 +38,7 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
 
   uint256 public immutable EXCESS_UTILIZATION_RATE;
 
-  ILendingPoolAddressesProvider public immutable addressesProvider;
+  ILendingPoolAddressesProvider public addressesProvider;
 
   // Base variable borrow rate when Utilization rate = 0. Expressed in ray
   uint256 internal immutable _baseVariableBorrowRate;
@@ -71,6 +72,13 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
     _variableRateSlope2 = variableRateSlope2;
     _stableRateSlope1 = stableRateSlope1;
     _stableRateSlope2 = stableRateSlope2;
+  }
+
+  event NewAddressProvider(address _provider);
+
+  function setNewAddressProvider(address _provider) public onlyOwner {
+      addressesProvider = ILendingPoolAddressesProvider(_provider);
+      emit NewAddressProvider(_provider);
   }
 
   function variableRateSlope1() external view returns (uint256) {

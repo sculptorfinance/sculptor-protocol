@@ -5,6 +5,7 @@ pragma solidity 0.7.6;
 import "../dependencies/openzeppelin/contracts/SafeMath.sol";
 import "../dependencies/openzeppelin/contracts/IERC20.sol";
 import "../dependencies/openzeppelin/contracts/Ownable.sol";
+import "../interfaces/IChefIncentivesController.sol";
 
 interface IPancakePair {
   function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
@@ -18,13 +19,14 @@ interface IMultiFeeDistribution {
     function lockedSupply() external view returns (uint256);
 }
 
-contract ProtocolOwnedDEXLiquidity is Ownable {
+contract ProtocolOwnedDEXLiquidityTreasury is Ownable {
 
     using SafeMath for uint256;
 
     IPancakePair constant public lpToken = IPancakePair(0x57190c8f9749aD5Cb342D50C74191cBBD49bf754);
     IERC20 public sBNB;
     IMultiFeeDistribution constant public treasury = IMultiFeeDistribution(0xe2b5653B669553B92CDbc7a54D3f8e40887ADc52);
+    address constant public burn = 0x48f6e78B4C067bBFe9a9ed119526dad313fcDF8E;
 
     struct UserRecord {
         uint256 nextClaimTime;
@@ -85,9 +87,9 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         superPODLCooldown = _podlCooldown;
     }
 
-    function protocolOwnedReserves() public view returns (uint256 wbnb, uint256 sculp) {
+    function protocolOwnedReserves() public view returns (uint256 wbnb, uint256 sculpt) {
         (uint reserve0, uint reserve1,) = lpToken.getReserves();
-        uint balance = lpToken.balanceOf(address(this));
+        uint balance = lpToken.balanceOf(burn);
         uint totalSupply = lpToken.totalSupply();
         return (reserve0.mul(balance).div(totalSupply), reserve1.mul(balance).div(totalSupply));
     }
@@ -116,13 +118,16 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
     }
 
     function _buy(uint _amount, uint _cooldownTime) internal {
+        UserRecord storage u = userData[msg.sender];
+
         require(_amount >= minBuyAmount, "Below min buy amount");
+        require(block.timestamp >= u.nextClaimTime, "Claimed too recently");
+
         uint lpAmount = _amount.mul(lpTokensPerOneBNB()).div(1e18);
-        lpToken.transferFrom(msg.sender, address(this), lpAmount);
+        lpToken.transferFrom(msg.sender, burn, lpAmount);
         sBNB.transfer(msg.sender, _amount);
         sBNB.transfer(address(treasury), _amount);
 
-        UserRecord storage u = userData[msg.sender];
         u.nextClaimTime = block.timestamp.add(_cooldownTime);
         u.claimCount = u.claimCount.add(1);
         u.totalBoughtBNB = u.totalBoughtBNB.add(_amount);
@@ -137,7 +142,7 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
     }
 
     function superPODL(uint256 _amount) public {
-        require(treasury.lockedBalances(msg.sender) >= minSuperPODLLock, "Need to lock SCULP!");
+        require(treasury.lockedBalances(msg.sender) >= minSuperPODLLock, "Need to lock SCULPT!");
         _buy(_amount, superPODLCooldown);
         emit AaaaaaahAndImSuperPODLiiiiing(msg.sender, _amount);
     }

@@ -74,11 +74,15 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     mapping(address => LockedBalance[]) private userLocks;
     mapping(address => LockedBalance[]) private userEarnings;
 
+
+
     /* ========== CONSTRUCTOR ========== */
 
     constructor(address _stakingToken) Ownable() {
         stakingToken = IMintableToken(_stakingToken);
         IMintableToken(_stakingToken).setMinter(address(this));
+        //5% for initial
+        IMintableToken(_stakingToken).mint(msg.sender, 5000000000000000000000000);
         // First reward MUST be the staking token or things will break
         // related to the 50% penalty and distribution to locked balances
         rewardTokens.push(_stakingToken);
