@@ -22,7 +22,6 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
   using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
   using UserConfiguration for DataTypes.UserConfigurationMap;
 
-  address public constant MOCK_USD_ADDRESS = 0x10F7Fc1F91Ba351f9C629c5947AD69bD03C05b96;
   IAaveIncentivesController public immutable incentivesController;
   IPriceOracleGetter public immutable oracle;
 
@@ -49,24 +48,28 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     );
   }
 
-  function getReservesData(ILendingPoolAddressesProvider provider, address user)
+  function getReservesList(ILendingPoolAddressesProvider provider)
+    public
+    view
+    override
+    returns (address[] memory)
+  {
+    ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
+    return lendingPool.getReservesList();
+  }
+
+  function getReservesData(ILendingPoolAddressesProvider provider)
     external
     view
     override
     returns (
-      AggregatedReserveData[] memory,
-      UserReserveData[] memory,
-      uint256,
-      IncentivesControllerData memory
+      AggregatedReserveData[] memory
     )
   {
     ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
     address[] memory reserves = lendingPool.getReservesList();
-    DataTypes.UserConfigurationMap memory userConfig = lendingPool.getUserConfiguration(user);
 
     AggregatedReserveData[] memory reservesData = new AggregatedReserveData[](reserves.length);
-    UserReserveData[] memory userReservesData =
-      new UserReserveData[](user != address(0) ? reserves.length : 0);
 
     for (uint256 i = 0; i < reserves.length; i++) {
       AggregatedReserveData memory reserveData = reservesData[i];
@@ -102,8 +105,9 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
       // reserve configuration
 
       // we're getting this info from the aToken, because some of assets can be not compliant with ETC20Detailed
-      reserveData.symbol = IERC20Detailed(reserveData.aTokenAddress).symbol();
-      reserveData.name = '';
+      /* reserveData.symbol = IERC20Detailed(reserveData.aTokenAddress).symbol(); */
+      reserveData.symbol = IERC20Detailed(reserveData.underlyingAsset).symbol();
+      reserveData.name = IERC20Detailed(reserveData.underlyingAsset).name();
 
       (
         reserveData.baseLTVasCollateral,
@@ -148,71 +152,54 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
           reserveData.vIncentivesLastUpdateTimestamp
         ) = incentivesController.getAssetData(reserveData.variableDebtTokenAddress);
       }
-
-      if (user != address(0)) {
-        // incentives
-        if (address(0) != address(incentivesController)) {
-          userReservesData[i].aTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.aTokenAddress
-          );
-          userReservesData[i].vTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.variableDebtTokenAddress
-          );
-          userReservesData[i].sTokenincentivesUserIndex = incentivesController.getUserAssetData(
-            user,
-            reserveData.stableDebtTokenAddress
-          );
-        }
-        // user reserve data
-        userReservesData[i].underlyingAsset = reserveData.underlyingAsset;
-        userReservesData[i].scaledATokenBalance = IAToken(reserveData.aTokenAddress)
-          .scaledBalanceOf(user);
-        userReservesData[i].usageAsCollateralEnabledOnUser = userConfig.isUsingAsCollateral(i);
-
-        if (userConfig.isBorrowing(i)) {
-          userReservesData[i].scaledVariableDebt = IVariableDebtToken(
-            reserveData
-              .variableDebtTokenAddress
-          )
-            .scaledBalanceOf(user);
-          userReservesData[i].principalStableDebt = IStableDebtToken(
-            reserveData
-              .stableDebtTokenAddress
-          )
-            .principalBalanceOf(user);
-          if (userReservesData[i].principalStableDebt != 0) {
-            userReservesData[i].stableBorrowRate = IStableDebtToken(
-              reserveData
-                .stableDebtTokenAddress
-            )
-              .getUserStableRate(user);
-            userReservesData[i].stableBorrowLastUpdateTimestamp = IStableDebtToken(
-              reserveData
-                .stableDebtTokenAddress
-            )
-              .getUserLastUpdated(user);
-          }
-        }
-      }
-    }
-
-
-    IncentivesControllerData memory incentivesControllerData;
-
-    if (address(0) != address(incentivesController)) {
-      if (user != address(0)) {
-        incentivesControllerData.userUnclaimedRewards = incentivesController.getUserUnclaimedRewards(user);
-      }
-      incentivesControllerData.emissionEndTimestamp = incentivesController.DISTRIBUTION_END();
     }
 
     return (
-      reservesData,
-      userReservesData,
-      10 ** 8,
-      incentivesControllerData
+      reservesData
     );
+  }
+
+  function getUserReservesData(ILendingPoolAddressesProvider provider, address user)
+    external
+    view
+    override
+    returns (UserReserveData[] memory, uint8)
+  {
+    ILendingPool lendingPool = ILendingPool(provider.getLendingPool());
+    address[] memory reserves = lendingPool.getReservesList();
+    DataTypes.UserConfigurationMap memory userConfig = lendingPool.getUserConfiguration(user);
+
+    UserReserveData[] memory userReservesData = new UserReserveData[](
+      user != address(0) ? reserves.length : 0
+    );
+
+    for (uint256 i = 0; i < reserves.length; i++) {
+      DataTypes.ReserveData memory baseData = lendingPool.getReserveData(reserves[i]);
+
+      // user reserve data
+      userReservesData[i].underlyingAsset = reserves[i];
+      userReservesData[i].scaledATokenBalance = IAToken(baseData.aTokenAddress).scaledBalanceOf(
+        user
+      );
+      userReservesData[i].usageAsCollateralEnabledOnUser = userConfig.isUsingAsCollateral(i);
+
+      if (userConfig.isBorrowing(i)) {
+        userReservesData[i].scaledVariableDebt = IVariableDebtToken(
+          baseData.variableDebtTokenAddress
+        ).scaledBalanceOf(user);
+        userReservesData[i].principalStableDebt = IStableDebtToken(baseData.stableDebtTokenAddress)
+          .principalBalanceOf(user);
+        if (userReservesData[i].principalStableDebt != 0) {
+          userReservesData[i].stableBorrowRate = IStableDebtToken(baseData.stableDebtTokenAddress)
+            .getUserStableRate(user);
+          userReservesData[i].stableBorrowLastUpdateTimestamp = IStableDebtToken(
+            baseData.stableDebtTokenAddress
+          ).getUserLastUpdated(user);
+        }
+      }
+    }
+
+    // Return 0 to be compatible with v3 userEmodeCategoryId return
+    return (userReservesData, 0);
   }
 }

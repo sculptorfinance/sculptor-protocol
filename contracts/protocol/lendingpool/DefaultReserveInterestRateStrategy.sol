@@ -56,22 +56,22 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy, Own
   uint256 internal immutable _stableRateSlope2;
 
   constructor(
-    ILendingPoolAddressesProvider provider,
-    uint256 optimalUtilizationRate,
-    uint256 baseVariableBorrowRate,
-    uint256 variableRateSlope1,
-    uint256 variableRateSlope2,
-    uint256 stableRateSlope1,
-    uint256 stableRateSlope2
+    ILendingPoolAddressesProvider provider_,
+    uint256 optimalUtilizationRate_,
+    uint256 baseVariableBorrowRate_,
+    uint256 variableRateSlope1_,
+    uint256 variableRateSlope2_,
+    uint256 stableRateSlope1_,
+    uint256 stableRateSlope2_
   ) {
-    OPTIMAL_UTILIZATION_RATE = optimalUtilizationRate;
-    EXCESS_UTILIZATION_RATE = WadRayMath.ray().sub(optimalUtilizationRate);
-    addressesProvider = provider;
-    _baseVariableBorrowRate = baseVariableBorrowRate;
-    _variableRateSlope1 = variableRateSlope1;
-    _variableRateSlope2 = variableRateSlope2;
-    _stableRateSlope1 = stableRateSlope1;
-    _stableRateSlope2 = stableRateSlope2;
+    OPTIMAL_UTILIZATION_RATE = optimalUtilizationRate_;
+    EXCESS_UTILIZATION_RATE = WadRayMath.ray().sub(optimalUtilizationRate_);
+    addressesProvider = provider_;
+    _baseVariableBorrowRate = baseVariableBorrowRate_;
+    _variableRateSlope1 = variableRateSlope1_;
+    _variableRateSlope2 = variableRateSlope2_;
+    _stableRateSlope1 = stableRateSlope1_;
+    _stableRateSlope2 = stableRateSlope2_;
   }
 
   event NewAddressProvider(address _provider);

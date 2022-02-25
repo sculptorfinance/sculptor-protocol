@@ -17,6 +17,21 @@ interface IAaveIncentivesController {
   event ClaimerSet(address indexed user, address indexed claimer);
 
   /*
+   * LEGACY **************************
+   * @dev Returns the configuration of the distribution for a certain asset
+   * @param asset The address of the reference asset of the distribution
+   * @return The asset index, the emission per second and the last updated timestamp
+   **/
+  function assets(address asset)
+    external
+    view
+    returns (
+      uint128,
+      uint128,
+      uint256
+    );
+
+  /*
    * @dev Returns the configuration of the distribution for a certain asset
    * @param asset The address of the reference asset of the distribution
    * @return The asset index, the emission per second and the last updated timestamp

@@ -7,7 +7,9 @@ contract TokenVestingTeam {
     using SafeMath for uint256;
 
     uint256 public startTime;
-    uint256 public constant duration = 86400 * 274;
+    uint256 public lastTimeRewardMint;
+    uint256 public constant duration = 86400 * 266; // 38 weeks
+    uint256 public constant unlockDuration = 60 * 5; // 2 weeks
     uint256 public immutable maxMintableTokens;
     uint256 public mintedTokens;
     IMultiFeeDistribution public minter;
@@ -43,6 +45,7 @@ contract TokenVestingTeam {
         require(msg.sender == owner);
         require(startTime == 0);
         startTime = block.timestamp;
+        lastTimeRewardMint = block.timestamp;
     }
 
     function claimable(address _claimer) external view returns (uint256) {
@@ -56,6 +59,7 @@ contract TokenVestingTeam {
 
     function claim(address _receiver) external {
         require(startTime != 0);
+        require(block.timestamp >= lastTimeRewardMint + unlockDuration, "Unlock every 2 weeks.");
         Vest storage v = vests[msg.sender];
         uint256 elapsedTime = block.timestamp.sub(startTime);
         if (elapsedTime > duration) elapsedTime = duration;
@@ -66,6 +70,10 @@ contract TokenVestingTeam {
             require(mintedTokens <= maxMintableTokens);
             minter.mint(_receiver, amount, false);
             v.claimed = claimable;
+            if(amount > 0){
+              lastTimeRewardMint = block.timestamp;
+            }
+
         }
     }
 }
