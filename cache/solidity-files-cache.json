@@ -1,0 +1,4411 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/Address.sol": {
+      "lastModificationDate": 1641870145440,
+      "contentHash": "b8fd05460c4681d4bf1c9c1d6dfe25ac",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/Address.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/WalletBalanceProvider.sol": {
+      "lastModificationDate": 1641870145470,
+      "contentHash": "1d58278b8d8df53364eb54e82d4c58a3",
+      "sourceName": "contracts/misc/WalletBalanceProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/Address.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/ILendingPool.sol",
+        "../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../protocol/libraries/configuration/ReserveConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "WalletBalanceProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
+      "lastModificationDate": 1641870145442,
+      "contentHash": "52e980bd06c992e0351f68ee44ead1e2",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/IERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingPoolAddressesProvider.sol": {
+      "lastModificationDate": 1641870145458,
+      "contentHash": "c025c418a7f5a02d0ec1645fcb93908e",
+      "sourceName": "contracts/interfaces/ILendingPoolAddressesProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingPoolAddressesProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingPool.sol": {
+      "lastModificationDate": 1641870145457,
+      "contentHash": "03c34a95672eb112f5e067cbd16b2bfb",
+      "sourceName": "contracts/interfaces/ILendingPool.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./ILendingPoolAddressesProvider.sol",
+        "../protocol/libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingPool"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/SafeERC20.sol": {
+      "lastModificationDate": 1641870145444,
+      "contentHash": "dc14c9021cf419c00c9c2bf4093b7384",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/SafeERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol",
+        "./SafeMath.sol",
+        "./Address.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "SafeERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/configuration/ReserveConfiguration.sol": {
+      "lastModificationDate": 1644921133653,
+      "contentHash": "fedbf83ee26bcd814b67c307544cdfb3",
+      "sourceName": "contracts/protocol/libraries/configuration/ReserveConfiguration.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../helpers/Errors.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ReserveConfiguration"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/types/DataTypes.sol": {
+      "lastModificationDate": 1644915063490,
+      "contentHash": "828dea8453333283fdbe17cb3b96f428",
+      "sourceName": "contracts/protocol/libraries/types/DataTypes.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "DataTypes"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/SafeMath.sol": {
+      "lastModificationDate": 1641870145445,
+      "contentHash": "a8c14bcd105697ebf9bbf22f365f13f0",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/helpers/Errors.sol": {
+      "lastModificationDate": 1641870145483,
+      "contentHash": "0f245019da83f368f7c3dc299c186da9",
+      "sourceName": "contracts/protocol/libraries/helpers/Errors.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Errors"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/lendingpool/LendingPoolCollateralManager.sol": {
+      "lastModificationDate": 1641870145476,
+      "contentHash": "8e008cae33e5fdd55a77d042b19e203d",
+      "sourceName": "contracts/protocol/lendingpool/LendingPoolCollateralManager.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts//SafeMath.sol",
+        "../../dependencies/openzeppelin/contracts//IERC20.sol",
+        "../../interfaces/IAToken.sol",
+        "../../interfaces/IStableDebtToken.sol",
+        "../../interfaces/IVariableDebtToken.sol",
+        "../../interfaces/IPriceOracleGetter.sol",
+        "../../interfaces/ILendingPoolCollateralManager.sol",
+        "../libraries/aave-upgradeability/VersionedInitializable.sol",
+        "../libraries/logic/GenericLogic.sol",
+        "../libraries/helpers/Helpers.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../libraries/math/PercentageMath.sol",
+        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../libraries/helpers/Errors.sol",
+        "../libraries/logic/ValidationLogic.sol",
+        "../libraries/types/DataTypes.sol",
+        "./LendingPoolStorage.sol",
+        "../libraries/configuration/UserConfiguration.sol",
+        "../libraries/configuration/ReserveConfiguration.sol",
+        "../libraries/logic/ReserveLogic.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPoolCollateralManager"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IAToken.sol": {
+      "lastModificationDate": 1641870145453,
+      "contentHash": "240f7b9b2e85f2858c58e599a657e147",
+      "sourceName": "contracts/interfaces/IAToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "./IScaledBalanceToken.sol",
+        "./IInitializableAToken.sol",
+        "./IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IAToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IStableDebtToken.sol": {
+      "lastModificationDate": 1641870145465,
+      "contentHash": "d7babf199878a3aa3ac851f14588ce82",
+      "sourceName": "contracts/interfaces/IStableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IInitializableDebtToken.sol",
+        "./IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IStableDebtToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IVariableDebtToken.sol": {
+      "lastModificationDate": 1641870145465,
+      "contentHash": "b9dd0e17ecaaa7cc059da1c426f6701f",
+      "sourceName": "contracts/interfaces/IVariableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IScaledBalanceToken.sol",
+        "./IInitializableDebtToken.sol",
+        "./IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IVariableDebtToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IPriceOracleGetter.sol": {
+      "lastModificationDate": 1641870145463,
+      "contentHash": "00bd1660de34994e18c9e056e5cb735d",
+      "sourceName": "contracts/interfaces/IPriceOracleGetter.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IPriceOracleGetter"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingPoolCollateralManager.sol": {
+      "lastModificationDate": 1641870145459,
+      "contentHash": "1ff4113c10ec128c03b9873b3aee7fca",
+      "sourceName": "contracts/interfaces/ILendingPoolCollateralManager.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingPoolCollateralManager"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/aave-upgradeability/VersionedInitializable.sol": {
+      "lastModificationDate": 1641870145481,
+      "contentHash": "32c5c0c966fd9aeb80d3d2f7d5d07776",
+      "sourceName": "contracts/protocol/libraries/aave-upgradeability/VersionedInitializable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "VersionedInitializable"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/logic/GenericLogic.sol": {
+      "lastModificationDate": 1644915486972,
+      "contentHash": "17c9df30fdd70ca87e34e034c359e9be",
+      "sourceName": "contracts/protocol/libraries/logic/GenericLogic.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "./ReserveLogic.sol",
+        "../configuration/ReserveConfiguration.sol",
+        "../configuration/UserConfiguration.sol",
+        "../math/WadRayMath.sol",
+        "../math/PercentageMath.sol",
+        "../../../interfaces/IPriceOracleGetter.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "GenericLogic"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/helpers/Helpers.sol": {
+      "lastModificationDate": 1641870145483,
+      "contentHash": "c8b1626e54e1cccb8ff55d113205b460",
+      "sourceName": "contracts/protocol/libraries/helpers/Helpers.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Helpers"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/math/WadRayMath.sol": {
+      "lastModificationDate": 1644915518981,
+      "contentHash": "2fa630bee94d492206bf956a331f0d93",
+      "sourceName": "contracts/protocol/libraries/math/WadRayMath.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../helpers/Errors.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "WadRayMath"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/math/PercentageMath.sol": {
+      "lastModificationDate": 1644915474857,
+      "contentHash": "1d31278ec7405c7c78bc52f7419dc1af",
+      "sourceName": "contracts/protocol/libraries/math/PercentageMath.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../helpers/Errors.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "PercentageMath"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/logic/ValidationLogic.sol": {
+      "lastModificationDate": 1641870145485,
+      "contentHash": "3e9135cf6e4aef54c7eb9ea98a86a04b",
+      "sourceName": "contracts/protocol/libraries/logic/ValidationLogic.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "./ReserveLogic.sol",
+        "./GenericLogic.sol",
+        "../math/WadRayMath.sol",
+        "../math/PercentageMath.sol",
+        "../../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../configuration/ReserveConfiguration.sol",
+        "../configuration/UserConfiguration.sol",
+        "../helpers/Errors.sol",
+        "../helpers/Helpers.sol",
+        "../../../interfaces/IReserveInterestRateStrategy.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ValidationLogic"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/lendingpool/LendingPoolStorage.sol": {
+      "lastModificationDate": 1641870145477,
+      "contentHash": "b329eb7a326e66c898aff78b46ee95f8",
+      "sourceName": "contracts/protocol/lendingpool/LendingPoolStorage.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/configuration/UserConfiguration.sol",
+        "../libraries/configuration/ReserveConfiguration.sol",
+        "../libraries/logic/ReserveLogic.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPoolStorage"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/configuration/UserConfiguration.sol": {
+      "lastModificationDate": 1644832450916,
+      "contentHash": "19f6930c6e8cffbee44a55cd357ab8e7",
+      "sourceName": "contracts/protocol/libraries/configuration/UserConfiguration.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../helpers/Errors.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "UserConfiguration"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/logic/ReserveLogic.sol": {
+      "lastModificationDate": 1641870145484,
+      "contentHash": "6abc44efd79bf285487d09b2ff777348",
+      "sourceName": "contracts/protocol/libraries/logic/ReserveLogic.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../../../interfaces/IAToken.sol",
+        "../../../interfaces/IStableDebtToken.sol",
+        "../../../interfaces/IVariableDebtToken.sol",
+        "../../../interfaces/IReserveInterestRateStrategy.sol",
+        "../configuration/ReserveConfiguration.sol",
+        "../math/MathUtils.sol",
+        "../math/WadRayMath.sol",
+        "../math/PercentageMath.sol",
+        "../helpers/Errors.sol",
+        "../types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ReserveLogic"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IScaledBalanceToken.sol": {
+      "lastModificationDate": 1641870145464,
+      "contentHash": "97cc16211090ef6a6b3e2a763bf58c64",
+      "sourceName": "contracts/interfaces/IScaledBalanceToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IScaledBalanceToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IInitializableAToken.sol": {
+      "lastModificationDate": 1641870145456,
+      "contentHash": "8e5d0d3ad617a53daa4cd89f899168d6",
+      "sourceName": "contracts/interfaces/IInitializableAToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./ILendingPool.sol",
+        "./IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IInitializableAToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IAaveIncentivesController.sol": {
+      "lastModificationDate": 1643704021654,
+      "contentHash": "dcd3d60ed75624d32919a0de8f572328",
+      "sourceName": "contracts/interfaces/IAaveIncentivesController.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IAaveIncentivesController"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IInitializableDebtToken.sol": {
+      "lastModificationDate": 1641870145457,
+      "contentHash": "8865e11b1260eb6e6da2a79dd93a5754",
+      "sourceName": "contracts/interfaces/IInitializableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./ILendingPool.sol",
+        "./IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IInitializableDebtToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IReserveInterestRateStrategy.sol": {
+      "lastModificationDate": 1641870145464,
+      "contentHash": "c082963049e13811b3f6403717ce6c70",
+      "sourceName": "contracts/interfaces/IReserveInterestRateStrategy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IReserveInterestRateStrategy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/math/MathUtils.sol": {
+      "lastModificationDate": 1641870145486,
+      "contentHash": "6afcc312f74a4b14643d054cd626f7d7",
+      "sourceName": "contracts/protocol/libraries/math/MathUtils.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "./WadRayMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "MathUtils"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/UiDataCalcutor.sol": {
+      "lastModificationDate": 1645435643875,
+      "contentHash": "37e07a9b1a3dc86fe08b1594c9ca2c75",
+      "sourceName": "contracts/misc/UiDataCalcutor.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/IAaveIncentivesController.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IPriceOracleGetter.sol",
+        "../interfaces/IAToken.sol",
+        "../protocol/libraries/math/WadRayMath.sol",
+        "../protocol/libraries/configuration/ReserveConfiguration.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol",
+        "../protocol/lendingpool/DefaultReserveInterestRateStrategy.sol",
+        "../protocol/libraries/logic/ReserveLogic.sol",
+        "../staking/ChefIncentivesController.sol",
+        "../staking/MasterChef.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IUniswapLPToken",
+        "UiDataCalcutor"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol": {
+      "lastModificationDate": 1641870145442,
+      "contentHash": "ee9cc832919aa6528e7ecece91486cd2",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IERC20Detailed"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/lendingpool/DefaultReserveInterestRateStrategy.sol": {
+      "lastModificationDate": 1645415296119,
+      "contentHash": "6267cf69d5c5f80bd60fd2a75e95d05c",
+      "sourceName": "contracts/protocol/lendingpool/DefaultReserveInterestRateStrategy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../interfaces/IReserveInterestRateStrategy.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../libraries/math/PercentageMath.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingRateOracle.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "DefaultReserveInterestRateStrategy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/ChefIncentivesController.sol": {
+      "lastModificationDate": 1641870145494,
+      "contentHash": "042f1209b6446a144079990c4124735b",
+      "sourceName": "contracts/staking/ChefIncentivesController.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IMultiFeeDistribution.sol",
+        "../interfaces/IOnwardIncentivesController.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ChefIncentivesController"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/MasterChef.sol": {
+      "lastModificationDate": 1642061604141,
+      "contentHash": "0f42911b3501f32c5442fcb9043fa007",
+      "sourceName": "contracts/staking/MasterChef.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IMultiFeeDistribution.sol",
+        "../interfaces/IOnwardIncentivesController.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "MasterChef"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/Ownable.sol": {
+      "lastModificationDate": 1641870145443,
+      "contentHash": "687f20321d0011b0997d4a139d65399d",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/Ownable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Context.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingRateOracle.sol": {
+      "lastModificationDate": 1641870145460,
+      "contentHash": "82e9c5d86492278120d1bfe2aced9451",
+      "sourceName": "contracts/interfaces/ILendingRateOracle.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingRateOracle"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/Context.sol": {
+      "lastModificationDate": 1641870145441,
+      "contentHash": "f1b9b4c399c3ca9b65f232ecab402fdc",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/Context.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IMultiFeeDistribution.sol": {
+      "lastModificationDate": 1641870145461,
+      "contentHash": "f41ec8756729f8c4151db7dca54624fd",
+      "sourceName": "contracts/interfaces/IMultiFeeDistribution.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IMultiFeeDistribution"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IOnwardIncentivesController.sol": {
+      "lastModificationDate": 1641870145462,
+      "contentHash": "dc0b06e8cf77164ce734c7f0743dd18e",
+      "sourceName": "contracts/interfaces/IOnwardIncentivesController.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IOnwardIncentivesController"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/ProtocolOwnedDEXLiquidityTreasury.sol": {
+      "lastModificationDate": 1643182940660,
+      "contentHash": "324b26c8fa36c3ca73b23e76eb975264",
+      "sourceName": "contracts/staking/ProtocolOwnedDEXLiquidityTreasury.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../interfaces/IChefIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IMultiFeeDistribution",
+        "IUniswapLPToken",
+        "ProtocolOwnedDEXLiquidityTreasury"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IChefIncentivesController.sol": {
+      "lastModificationDate": 1643768367651,
+      "contentHash": "5a639cb72708c3e5ac6464d60891cda3",
+      "sourceName": "contracts/interfaces/IChefIncentivesController.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IOnwardIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IChefIncentivesController"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/UiIncentiveDataProviderV3.sol": {
+      "lastModificationDate": 1643787134409,
+      "contentHash": "ecd1a1081fe920948f99dea23b8ef7d2",
+      "sourceName": "contracts/misc/UiIncentiveDataProviderV3.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/IChefIncentivesController.sol",
+        "./interfaces/IUiIncentiveDataProviderV2.sol",
+        "../staking/ChefIncentivesController.sol",
+        "../interfaces/IOnwardIncentivesController.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IAToken2.sol",
+        "../interfaces/IVariableDebtToken2.sol",
+        "../interfaces/IStableDebtToken.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol",
+        "../dependencies/openzeppelin/contracts/IERC20Detailed.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "UiIncentiveDataProviderV3"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/interfaces/IUiIncentiveDataProviderV2.sol": {
+      "lastModificationDate": 1643787012125,
+      "contentHash": "25bbbaf86ec796e2c2f6cc1bbed9a497",
+      "sourceName": "contracts/misc/interfaces/IUiIncentiveDataProviderV2.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/ILendingPoolAddressesProvider.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IUiIncentiveDataProviderV2"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IAToken2.sol": {
+      "lastModificationDate": 1643727008810,
+      "contentHash": "146dbd8a2b90efe89696b250d4917ee6",
+      "sourceName": "contracts/interfaces/IAToken2.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "./IScaledBalanceToken.sol",
+        "./IInitializableAToken.sol",
+        "./IAaveIncentivesController.sol",
+        "./IChefIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IAToken2"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IVariableDebtToken2.sol": {
+      "lastModificationDate": 1643726717717,
+      "contentHash": "4f7c4e010e14797e4c50d21908444a38",
+      "sourceName": "contracts/interfaces/IVariableDebtToken2.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IScaledBalanceToken.sol",
+        "./IInitializableDebtToken.sol",
+        "./IAaveIncentivesController.sol",
+        "./IChefIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IVariableDebtToken2"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/UiPoolDataProvider.sol": {
+      "lastModificationDate": 1644809183348,
+      "contentHash": "550872dfa9893a9d64cbb88e96018065",
+      "sourceName": "contracts/misc/UiPoolDataProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/IAaveIncentivesController.sol",
+        "./interfaces/IUiPoolDataProvider.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IPriceOracleGetter.sol",
+        "../interfaces/IAToken.sol",
+        "../interfaces/IVariableDebtToken.sol",
+        "../interfaces/IStableDebtToken.sol",
+        "../protocol/libraries/math/WadRayMath.sol",
+        "../protocol/libraries/configuration/ReserveConfiguration.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol",
+        "../protocol/lendingpool/DefaultReserveInterestRateStrategy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "UiPoolDataProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/interfaces/IUiPoolDataProvider.sol": {
+      "lastModificationDate": 1643860713860,
+      "contentHash": "9f80426eb1ecbc140f39df789e2b32c2",
+      "sourceName": "contracts/misc/interfaces/IUiPoolDataProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/IAaveIncentivesController.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IUiPoolDataProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/SculptorToken.sol": {
+      "lastModificationDate": 1641907983199,
+      "contentHash": "8d585d9048a1630fd71956be1ee9b5c5",
+      "sourceName": "contracts/staking/SculptorToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "SculptorToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/TokenVestingTeam.sol": {
+      "lastModificationDate": 1645369541700,
+      "contentHash": "fae18dc9a1633e5404fe1125a7f9f8f5",
+      "sourceName": "contracts/staking/TokenVestingTeam.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../interfaces/IMultiFeeDistribution.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "TokenVestingTeam"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/TokenVesting.sol": {
+      "lastModificationDate": 1641870145499,
+      "contentHash": "c293c764e2c795ca67ef0c5345901860",
+      "sourceName": "contracts/staking/TokenVesting.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../interfaces/IMultiFeeDistribution.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "TokenVesting"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/MultiFeeDistribution.sol": {
+      "lastModificationDate": 1644211097930,
+      "contentHash": "8a01b1900c98c0298b0a4471cf06ff48",
+      "sourceName": "contracts/staking/MultiFeeDistribution.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/ReentrancyGuard.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../interfaces/IMultiFeeDistribution.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IMintableToken",
+        "MultiFeeDistribution"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/ReentrancyGuard.sol": {
+      "lastModificationDate": 1641870145444,
+      "contentHash": "d93fa3d5cda0ecab7c18264519ff5a1a",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/ReentrancyGuard.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ReentrancyGuard"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/UiIncentiveDataProvider.sol": {
+      "lastModificationDate": 1644809188012,
+      "contentHash": "851a3e2009cb71066de0a403d9a836a9",
+      "sourceName": "contracts/misc/UiIncentiveDataProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/IAaveIncentivesController.sol",
+        "../interfaces/IUiIncentiveDataProvider.sol",
+        "../staking/ChefIncentivesController.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IAToken.sol",
+        "../interfaces/IVariableDebtToken.sol",
+        "../interfaces/IStableDebtToken.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol",
+        "../dependencies/openzeppelin/contracts/IERC20Detailed.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "UiIncentiveDataProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IUiIncentiveDataProvider.sol": {
+      "lastModificationDate": 1643712705976,
+      "contentHash": "0fd46eb0434afa4d51732e4a20f4de9e",
+      "sourceName": "contracts/interfaces/IUiIncentiveDataProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./ILendingPoolAddressesProvider.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IUiIncentiveDataProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/WETHGateway.sol": {
+      "lastModificationDate": 1642071900074,
+      "contentHash": "e65fa6a875c3a85dd5ad020c17db9a57",
+      "sourceName": "contracts/misc/WETHGateway.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "./interfaces/IWETH.sol",
+        "./interfaces/IWETHGateway.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IAToken.sol",
+        "../protocol/libraries/configuration/ReserveConfiguration.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/helpers/Helpers.sol",
+        "../protocol/libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "WETHGateway"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/interfaces/IWETH.sol": {
+      "lastModificationDate": 1641870145471,
+      "contentHash": "322d15f73689f1e5513d4bc75c909609",
+      "sourceName": "contracts/misc/interfaces/IWETH.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IWETH"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/interfaces/IWETHGateway.sol": {
+      "lastModificationDate": 1641870145471,
+      "contentHash": "53ebed6ce9b3e4456cd9d5d55a808945",
+      "sourceName": "contracts/misc/interfaces/IWETHGateway.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IWETHGateway"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/configuration/LendingPoolAddressesProviderRegistry.sol": {
+      "lastModificationDate": 1641907505550,
+      "contentHash": "0ef3549f1b2720d4b9311a0015788e56",
+      "sourceName": "contracts/protocol/configuration/LendingPoolAddressesProviderRegistry.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../../interfaces/ILendingPoolAddressesProviderRegistry.sol",
+        "../libraries/helpers/Errors.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPoolAddressesProviderRegistry"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol": {
+      "lastModificationDate": 1641870145459,
+      "contentHash": "cab4c6ca7c11a72bffeae6505a65a6cd",
+      "sourceName": "contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingPoolAddressesProviderRegistry"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/tokenization/VariableDebtToken.sol": {
+      "lastModificationDate": 1641870145492,
+      "contentHash": "ca404551a2e2e7c58d14a8d334652584",
+      "sourceName": "contracts/protocol/tokenization/VariableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/IVariableDebtToken.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../libraries/helpers/Errors.sol",
+        "./base/DebtTokenBase.sol",
+        "../../interfaces/ILendingPool.sol",
+        "../../interfaces/IAaveIncentivesController.sol",
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "VariableDebtToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/tokenization/base/DebtTokenBase.sol": {
+      "lastModificationDate": 1641870145493,
+      "contentHash": "834341f2958e267f1a4adee062423e9f",
+      "sourceName": "contracts/protocol/tokenization/base/DebtTokenBase.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../interfaces/ILendingPool.sol",
+        "../../../interfaces/ICreditDelegationToken.sol",
+        "../../libraries/aave-upgradeability/VersionedInitializable.sol",
+        "../IncentivizedERC20.sol",
+        "../../libraries/helpers/Errors.sol",
+        "../../../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "DebtTokenBase"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ICreditDelegationToken.sol": {
+      "lastModificationDate": 1641870145455,
+      "contentHash": "4693ec5d623c31d4facf7d98fd9373ff",
+      "sourceName": "contracts/interfaces/ICreditDelegationToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ICreditDelegationToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/tokenization/IncentivizedERC20.sol": {
+      "lastModificationDate": 1641870145491,
+      "contentHash": "28d2d9687d21041223061dc41d042298",
+      "sourceName": "contracts/protocol/tokenization/IncentivizedERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/Context.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../interfaces/IAaveIncentivesController.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/IPriceOracle.sol",
+        "../../interfaces/ILendingPool.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IncentivizedERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IPriceOracle.sol": {
+      "lastModificationDate": 1641870145463,
+      "contentHash": "166f9c9d77cff275dbb98a5e7bbbda90",
+      "sourceName": "contracts/interfaces/IPriceOracle.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IPriceOracle"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/AaveProtocolDataProvider.sol": {
+      "lastModificationDate": 1641870145466,
+      "contentHash": "63ff79a8f80d2c0600ef0e3f6ad61989",
+      "sourceName": "contracts/misc/AaveProtocolDataProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+        "../interfaces/ILendingPoolAddressesProvider.sol",
+        "../interfaces/ILendingPool.sol",
+        "../interfaces/IStableDebtToken.sol",
+        "../interfaces/IVariableDebtToken.sol",
+        "../protocol/libraries/configuration/ReserveConfiguration.sol",
+        "../protocol/libraries/configuration/UserConfiguration.sol",
+        "../protocol/libraries/types/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "AaveProtocolDataProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/lendingpool/LendingPoolConfigurator.sol": {
+      "lastModificationDate": 1641992249116,
+      "contentHash": "3762420b4cf3db3243f6e761cf43d83a",
+      "sourceName": "contracts/protocol/lendingpool/LendingPoolConfigurator.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../libraries/aave-upgradeability/VersionedInitializable.sol",
+        "../libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol",
+        "../libraries/configuration/ReserveConfiguration.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingPool.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20Detailed.sol",
+        "../libraries/helpers/Errors.sol",
+        "../libraries/math/PercentageMath.sol",
+        "../libraries/types/DataTypes.sol",
+        "../../interfaces/IInitializableDebtToken.sol",
+        "../../interfaces/IInitializableAToken.sol",
+        "../../interfaces/IChefIncentivesController.sol",
+        "../../interfaces/ILendingPoolConfigurator.sol",
+        "../../interfaces/IMultiFeeDistribution.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPoolConfigurator"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145480,
+      "contentHash": "38fa2dbc8d60e39f764c19c5ad3a6a5a",
+      "sourceName": "contracts/protocol/libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./BaseImmutableAdminUpgradeabilityProxy.sol",
+        "../../../dependencies/openzeppelin/upgradeability/InitializableUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "InitializableImmutableAdminUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/ILendingPoolConfigurator.sol": {
+      "lastModificationDate": 1641870145460,
+      "contentHash": "297601e516f50af1e7c6f1833133e410",
+      "sourceName": "contracts/interfaces/ILendingPoolConfigurator.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ILendingPoolConfigurator"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/libraries/aave-upgradeability/BaseImmutableAdminUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145480,
+      "contentHash": "5a19950240a175d058043b18d1102682",
+      "sourceName": "contracts/protocol/libraries/aave-upgradeability/BaseImmutableAdminUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../../dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "BaseImmutableAdminUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/InitializableUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145448,
+      "contentHash": "219ba5246e9fcb6a192f4fd42b01cb12",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/InitializableUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./BaseUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "InitializableUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145446,
+      "contentHash": "d16968cd8be5cf260a812d6ef703227e",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Proxy.sol",
+        "../contracts/Address.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "BaseUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/Proxy.sol": {
+      "lastModificationDate": 1641870145449,
+      "contentHash": "54d0ff4a320b582b8d2ac699c3e39361",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/Proxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Proxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/tokenization/StableDebtToken.sol": {
+      "lastModificationDate": 1641870145491,
+      "contentHash": "60a98a75e46fa9715b3a93b842f9b3fe",
+      "sourceName": "contracts/protocol/tokenization/StableDebtToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./base/DebtTokenBase.sol",
+        "../libraries/math/MathUtils.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../../interfaces/IStableDebtToken.sol",
+        "../../interfaces/ILendingPool.sol",
+        "../../interfaces/IAaveIncentivesController.sol",
+        "../libraries/helpers/Errors.sol",
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "StableDebtToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/flashloan/base/FlashLoanReceiverBase.sol": {
+      "lastModificationDate": 1641870145452,
+      "contentHash": "6a9dea1d73d9970c42ef9efd84b9d3c2",
+      "sourceName": "contracts/flashloan/base/FlashLoanReceiverBase.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../interfaces/IFlashLoanReceiver.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingPool.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "FlashLoanReceiverBase"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/flashloan/interfaces/IFlashLoanReceiver.sol": {
+      "lastModificationDate": 1641870145452,
+      "contentHash": "0ba0cc2081f11ee003a42d0f85c43e45",
+      "sourceName": "contracts/flashloan/interfaces/IFlashLoanReceiver.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/ILendingPool.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IFlashLoanReceiver"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/lendingpool/LendingPool.sol": {
+      "lastModificationDate": 1641870145475,
+      "contentHash": "e69d61aef8bbf3309ae86cbc5951cfb8",
+      "sourceName": "contracts/protocol/lendingpool/LendingPool.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../../dependencies/openzeppelin/contracts/Address.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol",
+        "../../interfaces/IAToken.sol",
+        "../../interfaces/IVariableDebtToken.sol",
+        "../../flashloan/interfaces/IFlashLoanReceiver.sol",
+        "../../interfaces/IPriceOracleGetter.sol",
+        "../../interfaces/IStableDebtToken.sol",
+        "../../interfaces/ILendingPool.sol",
+        "../libraries/aave-upgradeability/VersionedInitializable.sol",
+        "../libraries/helpers/Helpers.sol",
+        "../libraries/helpers/Errors.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../libraries/math/PercentageMath.sol",
+        "../libraries/logic/ReserveLogic.sol",
+        "../libraries/logic/GenericLogic.sol",
+        "../libraries/logic/ValidationLogic.sol",
+        "../libraries/configuration/ReserveConfiguration.sol",
+        "../libraries/configuration/UserConfiguration.sol",
+        "../libraries/types/DataTypes.sol",
+        "./LendingPoolStorage.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPool"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/AaveOracle.sol": {
+      "lastModificationDate": 1641870145466,
+      "contentHash": "7c79945bf7ddaad42e9a3d3680cca23b",
+      "sourceName": "contracts/misc/AaveOracle.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../interfaces/IPriceOracleGetter.sol",
+        "../interfaces/IPriceFeed.sol",
+        "../dependencies/openzeppelin/contracts/SafeERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "AaveOracle"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IPriceFeed.sol": {
+      "lastModificationDate": 1641870145462,
+      "contentHash": "91b82dcb31c365961d3461c609958fd8",
+      "sourceName": "contracts/interfaces/IPriceFeed.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IPriceFeed"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/PriceFeed.sol": {
+      "lastModificationDate": 1641870145468,
+      "contentHash": "ea002f2934ab688115667bd77d9c6dd9",
+      "sourceName": "contracts/misc/PriceFeed.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPriceFeed.sol",
+        "../interfaces/IBandStdReference.sol",
+        "../interfaces/IChainlinkAggregator.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "PriceFeed"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IBandStdReference.sol": {
+      "lastModificationDate": 1641870145454,
+      "contentHash": "5f5aded80eaf36ffa6cb95b654c63a4b",
+      "sourceName": "contracts/interfaces/IBandStdReference.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IBandStdReference"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IChainlinkAggregator.sol": {
+      "lastModificationDate": 1641870145454,
+      "contentHash": "9f90268e471e799f2db24d72ffd624e8",
+      "sourceName": "contracts/interfaces/IChainlinkAggregator.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IChainlinkAggregator"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/tokenization/AToken.sol": {
+      "lastModificationDate": 1641870145490,
+      "contentHash": "2348c1078597f2299484d36748298593",
+      "sourceName": "contracts/protocol/tokenization/AToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../../dependencies/openzeppelin/contracts/SafeERC20.sol",
+        "../../interfaces/ILendingPool.sol",
+        "../../interfaces/IAToken.sol",
+        "../libraries/math/WadRayMath.sol",
+        "../libraries/helpers/Errors.sol",
+        "../libraries/aave-upgradeability/VersionedInitializable.sol",
+        "./IncentivizedERC20.sol",
+        "../../interfaces/IAaveIncentivesController.sol",
+        "../../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "AToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/mocks/oracle/PriceOracle.sol": {
+      "lastModificationDate": 1641870145473,
+      "contentHash": "ee6bd63a6b32c027df01cf1e673b2cb3",
+      "sourceName": "contracts/mocks/oracle/PriceOracle.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/IPriceOracle.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "PriceOracle"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/contracts/ERC20.sol": {
+      "lastModificationDate": 1641870145442,
+      "contentHash": "c9923ef084f052e524bab3944597f77c",
+      "sourceName": "contracts/dependencies/openzeppelin/contracts/ERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Context.sol",
+        "./IERC20.sol",
+        "./SafeMath.sol",
+        "./Address.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/deployments/ATokensAndRatesHelper.sol": {
+      "lastModificationDate": 1641907474571,
+      "contentHash": "3e73125e4744063a53ee367f6281d965",
+      "sourceName": "contracts/deployments/ATokensAndRatesHelper.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../protocol/lendingpool/LendingPool.sol",
+        "../protocol/configuration/LendingPoolAddressesProvider.sol",
+        "../protocol/lendingpool/LendingPoolConfigurator.sol",
+        "../protocol/tokenization/AToken.sol",
+        "../protocol/lendingpool/DefaultReserveInterestRateStrategy.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "ATokensAndRatesHelper"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/protocol/configuration/LendingPoolAddressesProvider.sol": {
+      "lastModificationDate": 1641870145474,
+      "contentHash": "477268773d82a3cff2232dd3074d3c6f",
+      "sourceName": "contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol",
+        "../../interfaces/ILendingPoolAddressesProvider.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingPoolAddressesProvider"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/UpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145450,
+      "contentHash": "6cd38b7d67259f24547e02dc7c8042e5",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/UpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./BaseUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "UpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/BaseAdminUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145446,
+      "contentHash": "aadb991eb2b01416114902a76ef11ca7",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/BaseAdminUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./UpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "BaseAdminUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145448,
+      "contentHash": "947dc1c7a5b3401a3fba68cf85a61eec",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./BaseAdminUpgradeabilityProxy.sol",
+        "./InitializableUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "InitializableAdminUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/AdminUpgradeabilityProxy.sol": {
+      "lastModificationDate": 1641870145445,
+      "contentHash": "4aeb33eb7ced978e6e620587d809454d",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/AdminUpgradeabilityProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./BaseAdminUpgradeabilityProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "AdminUpgradeabilityProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/deployments/StableAndVariableTokensHelper.sol": {
+      "lastModificationDate": 1641870145451,
+      "contentHash": "aeda46743b301c28ce99c8722db64783",
+      "sourceName": "contracts/deployments/StableAndVariableTokensHelper.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../protocol/tokenization/StableDebtToken.sol",
+        "../protocol/tokenization/VariableDebtToken.sol",
+        "../mocks/oracle/LendingRateOracle.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "StableAndVariableTokensHelper"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/mocks/oracle/LendingRateOracle.sol": {
+      "lastModificationDate": 1641870145472,
+      "contentHash": "9b909202839b28211781984bf6a1d4fc",
+      "sourceName": "contracts/mocks/oracle/LendingRateOracle.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/ILendingRateOracle.sol",
+        "../../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "LendingRateOracle"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/MerkleDistributor.sol": {
+      "lastModificationDate": 1641870145496,
+      "contentHash": "e7228e4be2b8b9e82269580c8f054b1d",
+      "sourceName": "contracts/staking/MerkleDistributor.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IMultiFeeDistribution.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "MerkleDistributor"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/staking/ProtocolOwnedDEXLiquidity.sol": {
+      "lastModificationDate": 1643182679491,
+      "contentHash": "3442ff19d2ccb7f0f7ed0385505439c2",
+      "sourceName": "contracts/staking/ProtocolOwnedDEXLiquidity.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol",
+        "../dependencies/openzeppelin/contracts/IERC20.sol",
+        "../dependencies/openzeppelin/contracts/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IMultiFeeDistribution",
+        "IUniswapLPToken",
+        "ProtocolOwnedDEXLiquidity"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/Timelock.sol": {
+      "lastModificationDate": 1641870145469,
+      "contentHash": "aebcceabe019f7f6919f4434dab79838",
+      "sourceName": "contracts/misc/Timelock.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Timelock"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IExchangeAdapter.sol": {
+      "lastModificationDate": 1641870145456,
+      "contentHash": "719a748818198595a6d1243b47a77832",
+      "sourceName": "contracts/interfaces/IExchangeAdapter.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../dependencies/openzeppelin/contracts/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IExchangeAdapter"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/dependencies/openzeppelin/upgradeability/Initializable.sol": {
+      "lastModificationDate": 1641870145447,
+      "contentHash": "8762eba3fd8cd1240fbc9a81f4489efd",
+      "sourceName": "contracts/dependencies/openzeppelin/upgradeability/Initializable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/interfaces/IDelegationToken.sol": {
+      "lastModificationDate": 1641870145455,
+      "contentHash": "481187c8e9020a65fe574dc155db054d",
+      "sourceName": "contracts/interfaces/IDelegationToken.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "IDelegationToken"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/MockERC20.sol": {
+      "lastModificationDate": 1646907442931,
+      "contentHash": "64dcdbb884a336f17272266c431cc9d7",
+      "sourceName": "contracts/misc/MockERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "MockERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1641870541502,
+      "contentHash": "8065b340476f61365c076897199425f1",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../utils/Context.sol",
+        "./IERC20.sol",
+        "../../math/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1641870541898,
+      "contentHash": "6748815a5b45c4aeeda56819f41190e0",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1641870541351,
+      "contentHash": "2adbd82f6d055a4751566d4671512b03",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1641870541809,
+      "contentHash": "e0a41531d159d3a32f84b7a3ecf9fabb",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/math/SafeMath.sol": {
+      "lastModificationDate": 1641870541973,
+      "contentHash": "e03e12206057e809eb76c5f681170c32",
+      "sourceName": "@openzeppelin/contracts/math/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/SculptorUpgradeableProxy.sol": {
+      "lastModificationDate": 1642000795836,
+      "contentHash": "a190ca2460815a645a5b75387ac261ba",
+      "sourceName": "contracts/misc/SculptorUpgradeableProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "SculptorUpgradeableProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol": {
+      "lastModificationDate": 1641870542030,
+      "contentHash": "572da86d0eb185b41f85df7d2d75378b",
+      "sourceName": "@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./UpgradeableProxy.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "TransparentUpgradeableProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/proxy/UpgradeableProxy.sol": {
+      "lastModificationDate": 1641870542038,
+      "contentHash": "c163cbd51d0173b71c8137b0ddf1e0ba",
+      "sourceName": "@openzeppelin/contracts/proxy/UpgradeableProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Proxy.sol",
+        "../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "UpgradeableProxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
+      "lastModificationDate": 1641870541923,
+      "contentHash": "52841a5095656ecbf7bc86cd6c114699",
+      "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "Proxy"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1641870541285,
+      "contentHash": "7aa46886ff5abe7515496208a5e2ce5a",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.2 <0.8.0"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/MockPriceFeed.sol": {
+      "lastModificationDate": 1646977845262,
+      "contentHash": "369caea50002802e44900ef14c384779",
+      "sourceName": "contracts/misc/MockPriceFeed.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPriceFeed.sol",
+        "../interfaces/IBandStdReference.sol",
+        "../interfaces/IChainlinkAggregator.sol",
+        "../dependencies/openzeppelin/contracts/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.7.6"
+      ],
+      "artifacts": [
+        "MockPriceFeed"
+      ]
+    },
+    "/Users/chalitan/sculptor-protocol/contracts/misc/WETH.sol": {
+      "lastModificationDate": 1647147937983,
+      "contentHash": "57bbb25cc4b49f90a535338db66e3aa2",
+      "sourceName": "contracts/misc/WETH.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.8"
+      ],
+      "artifacts": [
+        "WETH"
+      ]
+    }
+  }
+}
