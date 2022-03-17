@@ -8,10 +8,11 @@ import "../dependencies/openzeppelin/contracts/IERC20.sol";
 import "../dependencies/openzeppelin/contracts/SafeERC20.sol";
 import "../dependencies/openzeppelin/contracts/SafeMath.sol";
 import "../dependencies/openzeppelin/contracts/Ownable.sol";
+import "../dependencies/openzeppelin/contracts/ReentrancyGuard.sol";
 
 // based on the Sushi MasterChef
 // https://github.com/sushiswap/sushiswap/blob/master/contracts/MasterChef.sol
-contract MasterChef is Ownable {
+contract MasterChef is Ownable, ReentrancyGuard {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -33,9 +34,9 @@ contract MasterChef is Ownable {
         uint128 rewardsPerSecond;
     }
 
-    address public poolConfigurator;
+    address public immutable poolConfigurator;
 
-    IMultiFeeDistribution public rewardMinter;
+    IMultiFeeDistribution public immutable rewardMinter;
     uint256 public rewardsPerSecond;
     uint256 public immutable maxMintableTokens;
     uint256 public mintedTokens;
@@ -76,6 +77,11 @@ contract MasterChef is Ownable {
         address indexed token,
         address indexed user,
         uint256 amount
+    );
+
+    event PoolAdded(
+        address token,
+        uint256 alloc
     );
 
     constructor(
@@ -119,6 +125,7 @@ contract MasterChef is Ownable {
             accRewardPerShare: 0,
             onwardIncentives: IOnwardIncentivesController(0)
         });
+        emit PoolAdded(_token, _allocPoint);
     }
 
     // Update the given pool's allocation point. Can only be called by the owner.
@@ -233,7 +240,7 @@ contract MasterChef is Ownable {
     }
 
     // Deposit LP tokens into the contract. Also triggers a claim.
-    function deposit(address _token, uint256 _amount) external {
+    function deposit(address _token, uint256 _amount) external nonReentrant {
         PoolInfo storage pool = poolInfo[_token];
         require(pool.lastRewardTime > 0);
         UserInfo storage user = userInfo[_token][msg.sender];
@@ -262,7 +269,7 @@ contract MasterChef is Ownable {
     }
 
     // Withdraw LP tokens. Also triggers a claim.
-    function withdraw(address _token, uint256 _amount) external {
+    function withdraw(address _token, uint256 _amount) external nonReentrant {
         PoolInfo storage pool = poolInfo[_token];
         require(pool.lastRewardTime > 0);
         UserInfo storage user = userInfo[_token][msg.sender];
@@ -285,13 +292,15 @@ contract MasterChef is Ownable {
     }
 
     // Withdraw without caring about rewards. EMERGENCY ONLY.
-    function emergencyWithdraw(address _token) external {
+    function emergencyWithdraw(address _token) external nonReentrant {
         PoolInfo storage pool = poolInfo[_token];
         UserInfo storage user = userInfo[_token][msg.sender];
-        IERC20(_token).safeTransfer(address(msg.sender), user.amount);
-        emit EmergencyWithdraw(_token, msg.sender, user.amount);
+        uint256 amount = user.amount;
         user.amount = 0;
         user.rewardDebt = 0;
+        IERC20(_token).safeTransfer(address(msg.sender), amount);
+        emit EmergencyWithdraw(_token, msg.sender, amount);
+
         if (pool.onwardIncentives != IOnwardIncentivesController(0)) {
             uint256 lpSupply = IERC20(_token).balanceOf(address(this));
             try pool.onwardIncentives.handleAction(_token, msg.sender, 0, lpSupply) {} catch {}
@@ -304,6 +313,7 @@ contract MasterChef is Ownable {
         _updateEmissions();
         uint256 pending;
         uint256 _totalAllocPoint = totalAllocPoint;
+        require(_totalAllocPoint != 0, "Total alloc must > 0");
         for (uint i = 0; i < _tokens.length; i++) {
             PoolInfo storage pool = poolInfo[_tokens[i]];
             require(pool.lastRewardTime > 0);

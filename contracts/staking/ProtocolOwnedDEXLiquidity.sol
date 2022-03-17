@@ -34,7 +34,7 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
     using SafeMath for uint256;
 
     IUniswapLPToken constant public lpToken = IUniswapLPToken(0x21EFFCCB384fC8996D8b1df5D9Ba1f9732efaa18);
-    IERC20 public sFTM;
+    IERC20 constant public sFTM = IERC20(0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83);
     IMultiFeeDistribution constant public treasury = IMultiFeeDistribution(0x7c32f68811C7de69fB3C26E0ED47b823fBDcF795);
 
     struct UserRecord {
@@ -61,10 +61,6 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         uint256 amount
     );
 
-    event SetsFTM(
-        IERC20 _sFTM
-    );
-
     constructor(
         uint256 _lockMultiplier,
         uint256 _minBuy,
@@ -75,10 +71,13 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         setParams(_lockMultiplier, _minBuy, _minLock, _cooldown, _podlCooldown);
     }
 
-    function setsFTM(IERC20 _sFTM) public onlyOwner
-    {
-      sFTM = IERC20(_sFTM);
-      emit SetsFTM(_sFTM);
+    /**
+     * @notice Checks if the msg.sender is a contract or a proxy
+     */
+    modifier notContract() {
+        require(!_isContract(msg.sender), "contract not allowed");
+        require(msg.sender == tx.origin, "proxy contract not allowed");
+        _;
     }
 
     function setParams(
@@ -128,28 +127,42 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
 
     function _buy(uint _amount, uint _cooldownTime) internal {
         require(_amount >= minBuyAmount, "Below min buy amount");
-        uint lpAmount = _amount.mul(lpTokensPerOneFTM()).div(1e18);
-        lpToken.transferFrom(msg.sender, address(this), lpAmount);
-        sFTM.transfer(msg.sender, _amount);
-        sFTM.transfer(address(treasury), _amount);
 
         UserRecord storage u = userData[msg.sender];
+        require(block.timestamp >= u.nextClaimTime, "Claimed too recently");
         u.nextClaimTime = block.timestamp.add(_cooldownTime);
         u.claimCount = u.claimCount.add(1);
         u.totalBoughtFTM = u.totalBoughtFTM.add(_amount);
         totalSoldFTM = totalSoldFTM.add(_amount);
 
+        uint lpAmount = _amount.mul(lpTokensPerOneFTM()).div(1e18);
+        lpToken.transferFrom(msg.sender, address(this), lpAmount);
+        sFTM.transfer(msg.sender, _amount);
+        sFTM.transfer(address(treasury), _amount);
+
         emit SoldFTM(msg.sender, _amount);
     }
 
-    function buyFTM(uint256 _amount) public {
+    function buyFTM(uint256 _amount) public notContract {
         require(_amount <= availableForUser(msg.sender), "Amount exceeds user limit");
         _buy(_amount, buyCooldown);
     }
 
-    function superPODL(uint256 _amount) public {
+    function superPODL(uint256 _amount) public notContract {
         require(treasury.lockedBalances(msg.sender) >= minSuperPODLLock, "Need to lock SCULP!");
         _buy(_amount, superPODLCooldown);
         emit AaaaaaahAndImSuperPODLiiiiing(msg.sender, _amount);
+    }
+
+    /**
+     * @notice Checks if address is a contract
+     * @dev It prevents contract from being targetted
+     */
+    function _isContract(address addr) internal view returns (bool) {
+        uint256 size;
+        assembly {
+            size := extcodesize(addr)
+        }
+        return size > 0;
     }
 }

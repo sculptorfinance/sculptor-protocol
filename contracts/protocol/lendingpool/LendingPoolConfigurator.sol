@@ -146,52 +146,6 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
     );
   }
 
-  function initReserveSetting(
-    ILendingPool _pool,
-    address _incentivesController,
-    address _treasury,
-    uint256 _allocPoint,
-    address _aTokenProxy,
-    address _stableProxy,
-    address _variableProxy,
-    address _interestRateStrategy,
-    address _underlyingAsset,
-    uint8 _underlyingAssetDecimals
-    ) external onlyPoolAdmin {
-    IChefIncentivesController incentivesController = IChefIncentivesController(_incentivesController);
-
-    incentivesController.addPool(_aTokenProxy, _allocPoint);
-    IMultiFeeDistribution(_treasury).addReward(_aTokenProxy);
-
-    incentivesController.addPool(_variableProxy, _allocPoint);
-
-    _pool.initReserve(
-      _underlyingAsset,
-      _aTokenProxy,
-      _stableProxy,
-      _variableProxy,
-      _interestRateStrategy
-    );
-
-    DataTypes.ReserveConfigurationMap memory currentConfig =
-      _pool.getConfiguration(_underlyingAsset);
-
-    currentConfig.setDecimals(_underlyingAssetDecimals);
-
-    currentConfig.setActive(true);
-    currentConfig.setFrozen(false);
-
-    _pool.setConfiguration(_underlyingAsset, currentConfig.data);
-
-    emit ReserveInitialized(
-      _underlyingAsset,
-      _aTokenProxy,
-      _stableProxy,
-      _variableProxy,
-      _interestRateStrategy
-    );
-  }
-
   /**
    * @dev Updates the aToken implementation for the reserve
    **/

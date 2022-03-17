@@ -49,7 +49,7 @@ contract AaveOracle is IPriceOracleGetter, Ownable {
     }
   }
 
-  /// @notice Gets an asset price by address
+  /// @notice Update an asset price by address
   /// @dev All assets are priced relative to USD
   /// @param asset The asset address
   function updateAssetPrice(address asset) public override returns (uint256) {

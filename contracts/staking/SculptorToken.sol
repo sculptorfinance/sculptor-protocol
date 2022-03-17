@@ -13,7 +13,7 @@ contract SculptorToken is IERC20 {
     string public constant name = "Sculptor Protocol Token";
     uint256 public constant decimals = 18;
     uint256 public override totalSupply;
-    uint256 public immutable maxTotalSupply = 100000000000000000000000000;
+    uint256 public immutable maxTotalSupply = 100_000_000 * 1e18;
     address public minter;
 
     mapping(address => uint256) public override balanceOf;
@@ -34,6 +34,7 @@ contract SculptorToken is IERC20 {
     /** shared logic for transfer and transferFrom */
     function _transfer(address _from, address _to, uint256 _value) internal {
         require(balanceOf[_from] >= _value, "Insufficient balance");
+        require(_to != address(this), "Invalid transfer");
         balanceOf[_from] = balanceOf[_from].sub(_value);
         balanceOf[_to] = balanceOf[_to].add(_value);
         emit Transfer(_from, _to, _value);
@@ -68,7 +69,7 @@ contract SculptorToken is IERC20 {
     {
         uint256 allowed = allowance[_from][msg.sender];
         require(allowed >= _value, "Insufficient allowance");
-        if (allowed != uint(-1)) {
+        if (allowed != type(uint256).max) {
             allowance[_from][msg.sender] = allowed.sub(_value);
         }
         _transfer(_from, _to, _value);

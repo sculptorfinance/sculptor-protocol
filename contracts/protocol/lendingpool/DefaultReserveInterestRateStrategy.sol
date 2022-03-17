@@ -38,7 +38,7 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy, Own
 
   uint256 public immutable EXCESS_UTILIZATION_RATE;
 
-  ILendingPoolAddressesProvider public addressesProvider;
+  ILendingPoolAddressesProvider public immutable addressesProvider;
 
   // Base variable borrow rate when Utilization rate = 0. Expressed in ray
   uint256 internal immutable _baseVariableBorrowRate;
@@ -72,13 +72,6 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy, Own
     _variableRateSlope2 = variableRateSlope2_;
     _stableRateSlope1 = stableRateSlope1_;
     _stableRateSlope2 = stableRateSlope2_;
-  }
-
-  event NewAddressProvider(address _provider);
-
-  function setNewAddressProvider(address _provider) public onlyOwner {
-      addressesProvider = ILendingPoolAddressesProvider(_provider);
-      emit NewAddressProvider(_provider);
   }
 
   function variableRateSlope1() external view returns (uint256) {

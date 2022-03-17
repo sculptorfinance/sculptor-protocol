@@ -50,6 +50,15 @@ abstract contract VersionedInitializable {
   }
 
   /**
+   * @dev Modifier to protect an initialization function so that it can only be invoked by functions with the
+   * {initializer} modifier, directly or indirectly.
+   */
+  modifier onlyInitializing() {
+      require(initializing, "Initializable: contract is not initializing");
+      _;
+  }
+
+  /**
    * @dev returns the revision number of the contract
    * Needs to be defined in the inherited class as a constant.
    **/

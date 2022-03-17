@@ -25,6 +25,7 @@ import {ReserveConfiguration} from '../libraries/configuration/ReserveConfigurat
 import {UserConfiguration} from '../libraries/configuration/UserConfiguration.sol';
 import {DataTypes} from '../libraries/types/DataTypes.sol';
 import {LendingPoolStorage} from './LendingPoolStorage.sol';
+import {ReentrancyGuardUpgradeable} from '../../dependencies/openzeppelin/upgradeability/ReentrancyGuardUpgradeable.sol';
 
 /**
  * @title LendingPool contract
@@ -43,7 +44,7 @@ import {LendingPoolStorage} from './LendingPoolStorage.sol';
  *   LendingPoolAddressesProvider
  * @author Aave
  **/
-contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage {
+contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage, ReentrancyGuardUpgradeable {
   using SafeMath for uint256;
   using WadRayMath for uint256;
   using PercentageMath for uint256;
@@ -109,7 +110,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 amount,
     address onBehalfOf,
     uint16 referralCode
-  ) external override whenNotPaused {
+  ) external override whenNotPaused nonReentrant {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     ValidationLogic.validateDeposit(reserve, amount);
@@ -146,7 +147,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     address asset,
     uint256 amount,
     address to
-  ) external override whenNotPaused returns (uint256) {
+  ) external override whenNotPaused nonReentrant returns (uint256) {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     address aToken = reserve.aTokenAddress;
@@ -207,7 +208,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 interestRateMode,
     uint16 referralCode,
     address onBehalfOf
-  ) external override whenNotPaused {
+  ) external override whenNotPaused nonReentrant {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     _executeBorrow(
@@ -241,7 +242,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     uint256 amount,
     uint256 rateMode,
     address onBehalfOf
-  ) external override whenNotPaused returns (uint256) {
+  ) external override whenNotPaused nonReentrant returns (uint256) {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     (uint256 stableDebt, uint256 variableDebt) = Helpers.getUserCurrentDebt(onBehalfOf, reserve);
@@ -297,7 +298,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
    * @param asset The address of the underlying asset borrowed
    * @param rateMode The rate mode that the user wants to swap to
    **/
-  function swapBorrowRateMode(address asset, uint256 rateMode) external override whenNotPaused {
+  function swapBorrowRateMode(address asset, uint256 rateMode) external override nonReentrant whenNotPaused {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     (uint256 stableDebt, uint256 variableDebt) = Helpers.getUserCurrentDebt(msg.sender, reserve);
@@ -390,6 +391,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   function setUserUseReserveAsCollateral(address asset, bool useAsCollateral)
     external
     override
+    nonReentrant
     whenNotPaused
   {
     DataTypes.ReserveData storage reserve = _reserves[asset];
@@ -431,7 +433,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     address user,
     uint256 debtToCover,
     bool receiveAToken
-  ) external override whenNotPaused {
+  ) external override nonReentrant whenNotPaused {
     address collateralManager = _addressesProvider.getLendingPoolCollateralManager();
 
     //solium-disable-next-line
@@ -491,7 +493,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     address onBehalfOf,
     bytes calldata params,
     uint16 referralCode
-  ) external override whenNotPaused {
+  ) external override whenNotPaused nonReentrant {
     FlashLoanLocalVars memory vars;
 
     ValidationLogic.validateFlashloan(assets, amounts);

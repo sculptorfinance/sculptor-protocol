@@ -10,8 +10,8 @@ contract TokenVesting {
     uint256 public constant duration = 86400 * 365;
     uint256 public immutable maxMintableTokens;
     uint256 public mintedTokens;
-    IMultiFeeDistribution public minter;
-    address public owner;
+    IMultiFeeDistribution public immutable minter;
+    address public immutable owner;
 
     struct Vest {
         uint256 total;
@@ -56,7 +56,7 @@ contract TokenVesting {
 
     function claim(address _receiver) external {
         require(startTime != 0);
-        Vest storage v = vests[msg.sender];
+        Vest memory v = vests[msg.sender];
         uint256 elapsedTime = block.timestamp.sub(startTime);
         if (elapsedTime > duration) elapsedTime = duration;
         uint256 claimable = v.total.mul(elapsedTime).div(duration);
@@ -64,8 +64,8 @@ contract TokenVesting {
             uint256 amount = claimable.sub(v.claimed);
             mintedTokens = mintedTokens.add(amount);
             require(mintedTokens <= maxMintableTokens);
-            minter.mint(_receiver, amount, false);
             v.claimed = claimable;
+            minter.mint(_receiver, amount, false);
         }
     }
 }

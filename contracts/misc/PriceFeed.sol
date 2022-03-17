@@ -489,7 +489,8 @@ contract PriceFeed is IPriceFeed {
         {
             // If call to Chainlink succeeds, return the response and success = true
             chainlinkResponse.roundId = roundId;
-            chainlinkResponse.answer = _scaleChainlinkPriceByDigits(uint256(answer), chainlinkResponse.decimals);
+            uint256 answer_res = answer > 0 ? uint256(answer) : uint256(0);
+            chainlinkResponse.answer = _scaleChainlinkPriceByDigits(answer_res, chainlinkResponse.decimals);
             chainlinkResponse.timestamp = timestamp;
             chainlinkResponse.success = true;
             return chainlinkResponse;
