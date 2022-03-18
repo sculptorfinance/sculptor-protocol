@@ -56,7 +56,7 @@ contract TokenVesting {
 
     function claim(address _receiver) external {
         require(startTime != 0);
-        Vest memory v = vests[msg.sender];
+        Vest storage v = vests[msg.sender];
         uint256 elapsedTime = block.timestamp.sub(startTime);
         if (elapsedTime > duration) elapsedTime = duration;
         uint256 claimable = v.total.mul(elapsedTime).div(duration);
