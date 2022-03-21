@@ -162,7 +162,7 @@ contract ChefIncentivesController is Ownable {
             UserInfo storage user = userInfo[token][_user];
             uint256 accRewardPerShare = pool.accRewardPerShare;
             uint256 lpSupply = pool.totalSupply;
-            if (block.timestamp > pool.lastRewardTime && lpSupply != 0) {
+            if (block.timestamp > pool.lastRewardTime && lpSupply != 0 && totalAllocPoint != 0) {
                 uint256 duration = block.timestamp.sub(pool.lastRewardTime);
                 uint256 reward = duration.mul(rewardsPerSecond).mul(pool.allocPoint).div(totalAllocPoint);
                 accRewardPerShare = accRewardPerShare.add(reward.mul(1e12).div(lpSupply));
@@ -206,9 +206,11 @@ contract ChefIncentivesController is Ownable {
             return;
         }
         uint256 duration = block.timestamp.sub(pool.lastRewardTime);
-        uint256 reward = duration.mul(rewardsPerSecond).mul(pool.allocPoint).div(_totalAllocPoint);
-        pool.accRewardPerShare = pool.accRewardPerShare.add(reward.mul(1e12).div(lpSupply));
-        pool.lastRewardTime = block.timestamp;
+        if(_totalAllocPoint != 0){
+          uint256 reward = duration.mul(rewardsPerSecond).mul(pool.allocPoint).div(_totalAllocPoint);
+          pool.accRewardPerShare = pool.accRewardPerShare.add(reward.mul(1e12).div(lpSupply));
+          pool.lastRewardTime = block.timestamp;
+        }
     }
 
     function _mint(address _user, uint256 _amount) internal {

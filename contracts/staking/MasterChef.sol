@@ -215,14 +215,17 @@ contract MasterChef is Ownable, ReentrancyGuard {
             return;
         }
         uint256 lpSupply = IERC20(_token).balanceOf(address(this));
-        if (lpSupply == 0) {
+        if (lpSupply == 0 || _totalAllocPoint == 0) {
             pool.lastRewardTime = block.timestamp;
             return;
         }
         uint256 duration = block.timestamp.sub(pool.lastRewardTime);
-        uint256 reward = duration.mul(rewardsPerSecond).mul(pool.allocPoint).div(_totalAllocPoint);
-        pool.accRewardPerShare = pool.accRewardPerShare.add(reward.mul(1e12).div(lpSupply));
-        pool.lastRewardTime = block.timestamp;
+        if(_totalAllocPoint != 0){
+          uint256 reward = duration.mul(rewardsPerSecond).mul(pool.allocPoint).div(_totalAllocPoint);
+          pool.accRewardPerShare = pool.accRewardPerShare.add(reward.mul(1e12).div(lpSupply));
+          pool.lastRewardTime = block.timestamp;
+        }
+
     }
 
 
