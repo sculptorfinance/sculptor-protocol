@@ -11,7 +11,7 @@ contract SculptorToken is IERC20 {
 
     string public constant symbol = "SCULPT";
     string public constant name = "Sculptor Protocol Token";
-    uint256 public constant decimals = 18;
+    uint8 public constant decimals = 18;
     uint256 public override totalSupply;
     uint256 public immutable maxTotalSupply = 100_000_000 * 1e18;
     address public minter;

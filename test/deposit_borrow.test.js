@@ -489,15 +489,21 @@ describe("Lending Pool and Stake Locked Sculpt Token", function () {
     expect(platformFeeFtm2).to.equal("0");
 
     // increase block timestamp 3 months
-    await network.provider.send("evm_increaseTime", [7776000]);
+    await network.provider.send("evm_increaseTime", [7876000]);
     await network.provider.send("evm_mine");
 
     const lockedExp = await multifeedistributor.lockedBalances(user1.address);
     expect(lockedExp.total.toString()).to.equal("200000000000000000000");
     // get locked sculpt after 3 mount
+    const before = new BigNumber((await sculptorToken.balanceOf(user1.address)).toString());
     await multifeedistributor.connect(user1).withdrawExpiredLocks();
+    const after = new BigNumber((await sculptorToken.balanceOf(user1.address)).toString());
+    const diff = after.minus(before)
     const lockedBalanceExp = await multifeedistributor.lockedBalances(user1.address);
+
     expect(lockedBalanceExp.total.toString()).to.equal("0");
+    expect(diff.toFixed()).to.equal("200000000000000000000");
+
 
   });
 

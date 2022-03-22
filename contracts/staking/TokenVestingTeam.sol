@@ -69,8 +69,8 @@ contract TokenVestingTeam {
             mintedTokens = mintedTokens.add(amount);
             require(mintedTokens <= maxMintableTokens);
             v.claimed = claimable;
-            minter.mint(_receiver, amount, false);
             if(amount > 0){
+              minter.mint(_receiver, amount, false);
               lastTimeRewardMint = block.timestamp;
             }
 

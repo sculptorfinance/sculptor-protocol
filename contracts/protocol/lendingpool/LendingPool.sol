@@ -351,7 +351,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
    * @param asset The address of the underlying asset borrowed
    * @param user The address of the user to be rebalanced
    **/
-  function rebalanceStableBorrowRate(address asset, address user) external override whenNotPaused {
+  function rebalanceStableBorrowRate(address asset, address user) external override nonReentrant whenNotPaused {
     DataTypes.ReserveData storage reserve = _reserves[asset];
 
     IERC20 stableDebtToken = IERC20(reserve.stableDebtTokenAddress);

@@ -201,7 +201,7 @@ contract ChefIncentivesController is Ownable {
             return;
         }
         uint256 lpSupply = pool.totalSupply;
-        if (lpSupply == 0) {
+        if (lpSupply == 0  || _totalAllocPoint == 0) {
             pool.lastRewardTime = block.timestamp;
             return;
         }
