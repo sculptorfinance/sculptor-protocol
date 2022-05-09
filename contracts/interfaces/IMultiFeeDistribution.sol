@@ -6,5 +6,9 @@ interface IMultiFeeDistribution {
 
     function addReward(address rewardsToken) external;
     function mint(address user, uint256 amount, bool withPenalty) external;
+    function mintLock(address user, uint256 amount) external;
+    function exit() external;
+    function withdrawExpiredLocks() external;
+    function getReward() external;
 
 }
