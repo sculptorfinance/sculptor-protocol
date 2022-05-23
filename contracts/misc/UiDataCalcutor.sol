@@ -46,12 +46,13 @@ contract UiDataCalcutor {
     uint256 constant SECONDS_PER_YEAR = 31536000;
     uint256 constant RAY = 1e27;
 
-    address constant weth = 0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83;
+    address immutable weth;
 
     IPriceOracleGetter public immutable oracle;
 
-    constructor(IPriceOracleGetter _oracle) {
+    constructor(IPriceOracleGetter _oracle, address _weth) {
       oracle = _oracle;
+      weth = _weth;
     }
 
     function rewardPrice(address pair) public view returns (uint256) {

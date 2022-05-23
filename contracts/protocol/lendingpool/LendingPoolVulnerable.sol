@@ -44,7 +44,7 @@ import {ReentrancyGuardUpgradeable} from '../../dependencies/openzeppelin/upgrad
  *   LendingPoolAddressesProvider
  * @author Aave
  **/
-contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage, ReentrancyGuardUpgradeable {
+contract LendingPoolVulnerable is VersionedInitializable, ILendingPool, LendingPoolStorage, ReentrancyGuardUpgradeable {
   using SafeMath for uint256;
   using WadRayMath for uint256;
   using PercentageMath for uint256;
@@ -55,7 +55,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 
   uint256 public constant LENDINGPOOL_REVISION = 0x2;
 
-  constructor() initializer {}
+  // constructor() initializer {}
 
   modifier whenNotPaused() {
     _whenNotPaused();

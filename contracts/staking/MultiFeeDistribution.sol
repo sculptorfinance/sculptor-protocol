@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: NONE
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
@@ -81,8 +80,8 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     constructor(address _stakingToken) Ownable() {
         stakingToken = IMintableToken(_stakingToken);
         IMintableToken(_stakingToken).setMinter(address(this));
-        // 5% for initial + IAO
-        IMintableToken(_stakingToken).mint(msg.sender, 30_000_000 * 1e18);
+        // 3.5% for initial + 15% MKT + 10% LOCKDROP
+        IMintableToken(_stakingToken).mint(msg.sender, 28_500_000 * 1e18);
         // First reward MUST be the staking token or things will break
         // related to the 50% penalty and distribution to locked balances
         rewardTokens.push(_stakingToken);

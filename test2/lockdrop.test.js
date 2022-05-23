@@ -46,10 +46,10 @@ describe("Lock Drop", function () {
     // start deposit
     await lockDrop.end();
 
-    const bbf1 = await stakedToken.balanceOf(user1.address);
-    await lockDrop.connect(user1).withdraw();
-    const baf1 = await stakedToken.balanceOf(user1.address);
-    console.log(51, "Compare withdraw balance", bbf1.toString(), baf1.toString());
+    // const bbf1 = await stakedToken.balanceOf(user1.address);
+    // await lockDrop.connect(user1).withdraw(0);
+    // const baf1 = await stakedToken.balanceOf(user1.address);
+    // console.log(51, "Compare withdraw balance", bbf1.toString(), baf1.toString());
 
     const totalSupplyWeight = await lockDrop.totalSupplyWeight();
     const blld = await stakedToken.balanceOf(lockDrop.address);
@@ -63,14 +63,14 @@ describe("Lock Drop", function () {
     await network.provider.send("evm_increaseTime", [86400*7]);
     await network.provider.send("evm_mine");
 
-    const rbbf1 = await stakedToken.balanceOf(user2.address);
+    const rbbf2 = await stakedToken.balanceOf(user2.address);
     // const rewardWeight1 = await lockDrop.calculateRewardPaid(user1.address);
     // const rewardWeight2 = await lockDrop.calculateRewardPaid(user2.address);
-    await lockDrop.connect(user2).withdraw();
-    await lockDrop.connect(user1).withdraw();
+    // await lockDrop.connect(user2).withdraw(1);
+    await lockDrop.connect(user2).withdrawAll();
     const maxsp = await lockDrop.maxRewardSupply()
-    const rbaf1 = await stakedToken.balanceOf(user2.address);
-    console.log(65, "Compare withdraw balance", rbbf1.toString(), rbaf1.toString());
+    const rbaf2 = await stakedToken.balanceOf(user2.address);
+    console.log(65, "Compare withdraw balance", rbbf2.toString(), rbaf2.toString());
     // console.log(68, rewardWeight1.toString(), rewardWeight2.toString(), maxsp.toString());
     // // increase block timestamp
     // await network.provider.send("evm_increaseTime", [86400*14]);

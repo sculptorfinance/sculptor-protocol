@@ -34,25 +34,25 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
     using SafeMath for uint256;
 
     IUniswapLPToken constant public lpToken = IUniswapLPToken(0x21EFFCCB384fC8996D8b1df5D9Ba1f9732efaa18);
-    IERC20 constant public sFTM = IERC20(0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83);
+    IERC20 constant public sBNB = IERC20(0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83);
     IMultiFeeDistribution constant public treasury = IMultiFeeDistribution(0x7c32f68811C7de69fB3C26E0ED47b823fBDcF795);
 
     struct UserRecord {
         uint256 nextClaimTime;
         uint256 claimCount;
-        uint256 totalBoughtFTM;
+        uint256 totalBoughtBNB;
     }
 
     mapping (address => UserRecord) public userData;
 
-    uint public totalSoldFTM;
+    uint public totalSoldBNB;
     uint public minBuyAmount;
     uint public minSuperPODLLock;
     uint public buyCooldown;
     uint public superPODLCooldown;
     uint public lockedBalanceMultiplier;
 
-    event SoldFTM(
+    event SoldBNB(
         address indexed buyer,
         uint256 amount
     );
@@ -95,21 +95,21 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         superPODLCooldown = _podlCooldown;
     }
 
-    function protocolOwnedReserves() public view returns (uint256 wftm, uint256 sculp) {
+    function protocolOwnedReserves() public view returns (uint256 wbnb, uint256 sculp) {
         (uint reserve0, uint reserve1,) = lpToken.getReserves();
         uint balance = lpToken.balanceOf(address(this));
         uint totalSupply = lpToken.totalSupply();
         return (reserve0.mul(balance).div(totalSupply), reserve1.mul(balance).div(totalSupply));
     }
 
-    function availableFTM() public view returns (uint256) {
-        return sFTM.balanceOf(address(this)) / 2;
+    function availableBNB() public view returns (uint256) {
+        return sBNB.balanceOf(address(this)) / 2;
     }
 
     function availableForUser(address _user) public view returns (uint256) {
         UserRecord storage u = userData[_user];
         if (u.nextClaimTime > block.timestamp) return 0;
-        uint available = availableFTM();
+        uint available = availableBNB();
         uint userLocked = treasury.lockedBalances(_user);
         uint totalLocked = treasury.lockedSupply();
         uint amount = available.mul(lockedBalanceMultiplier).mul(userLocked).div(totalLocked);
@@ -119,7 +119,7 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         return amount;
     }
 
-    function lpTokensPerOneFTM() public view returns (uint256) {
+    function lpTokensPerOneBNB() public view returns (uint256) {
         uint totalSupply = lpToken.totalSupply();
         (uint reserve0,,) = lpToken.getReserves();
         return totalSupply.mul(1e18).mul(45).div(reserve0).div(100);
@@ -132,18 +132,18 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         require(block.timestamp >= u.nextClaimTime, "Claimed too recently");
         u.nextClaimTime = block.timestamp.add(_cooldownTime);
         u.claimCount = u.claimCount.add(1);
-        u.totalBoughtFTM = u.totalBoughtFTM.add(_amount);
-        totalSoldFTM = totalSoldFTM.add(_amount);
+        u.totalBoughtBNB = u.totalBoughtBNB.add(_amount);
+        totalSoldBNB = totalSoldBNB.add(_amount);
 
-        uint lpAmount = _amount.mul(lpTokensPerOneFTM()).div(1e18);
+        uint lpAmount = _amount.mul(lpTokensPerOneBNB()).div(1e18);
         lpToken.transferFrom(msg.sender, address(this), lpAmount);
-        sFTM.transfer(msg.sender, _amount);
-        sFTM.transfer(address(treasury), _amount);
+        sBNB.transfer(msg.sender, _amount);
+        sBNB.transfer(address(treasury), _amount);
 
-        emit SoldFTM(msg.sender, _amount);
+        emit SoldBNB(msg.sender, _amount);
     }
 
-    function buyFTM(uint256 _amount) public notContract {
+    function buyBNB(uint256 _amount) public notContract {
         require(_amount <= availableForUser(msg.sender), "Amount exceeds user limit");
         _buy(_amount, buyCooldown);
     }

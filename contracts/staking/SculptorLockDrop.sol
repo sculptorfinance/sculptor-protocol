@@ -1,5 +1,4 @@
 pragma solidity 0.7.6;
-pragma abicoder v2;
 
 import "../dependencies/openzeppelin/contracts/IERC20.sol";
 import "../dependencies/openzeppelin/contracts/SafeERC20.sol";
@@ -77,7 +76,7 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
     }
 
     function startRewardPaid(uint256 _amount) external onlyOwner {
-        require(startTime > 0, "Not starting yet.");
+        require(startTime > 0, "Not started yet.");
         require(maxRewardSupply == 0);
         require(lockedStatus, "Start reward after end deposited.");
         IERC20(rewardToken).safeTransferFrom(msg.sender, address(this), _amount);
@@ -119,8 +118,8 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
 
     function getReward() external nonReentrant {
         require(!userRewardPaid[msg.sender], "User already got reward.");
-        require(startTime > 0, "Not starting");
-        require(lockedStatus, "Must ended lock period");
+        require(startTime > 0, "Not started yet!");
+        require(lockedStatus, "Must ended lock period.");
 
         uint256 totalRemainReward = IERC20(rewardToken).balanceOf(address(this));
         require(totalRemainReward > 0, "No reward!");
@@ -134,7 +133,20 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
         emit RewardPaid(msg.sender, reward);
     }
 
-    function withdraw() external nonReentrant {
+    function withdraw(uint256 index) external nonReentrant {
+        UserInfo storage user = userInfo[msg.sender][index];
+        uint256 withdrawAmount = user.balances;
+        require(user.unlockTime <= block.timestamp, "Cant unlock!");
+        require(withdrawAmount > 0, "No token for unlock!");
+        user.balances = 0;
+        user.unlockTime = 0;
+        require(userBalances[msg.sender] >= withdrawAmount, "Not enough token!");
+        userBalances[msg.sender] = userBalances[msg.sender].sub(withdrawAmount);
+        IERC20(stakedToken).safeTransfer(msg.sender, withdrawAmount);
+        emit Withdrawn(msg.sender, withdrawAmount);
+    }
+
+    function withdrawAll() external nonReentrant {
         uint256 withdrawAmount;
         for (uint i; i < lockInfo.length; i++) {
             UserInfo storage user = userInfo[msg.sender][i];
