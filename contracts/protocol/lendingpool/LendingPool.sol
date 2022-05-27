@@ -583,7 +583,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   {
     return _reserves[asset];
   }
-
+  
   /**
    * @dev Returns the user account data across all the reserves
    * @param user The address of the user

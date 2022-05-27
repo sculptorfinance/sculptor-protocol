@@ -4,7 +4,7 @@ const BigNumber = require('bignumber.js');
 
 describe("Token And MultiFeeDistribution Deployed", function () {
 
-      const initAmount = 30000000000000000000000000;
+      const initAmount = 28500000000000000000000000;
       const decimals = 18
       const symbol = "SCULPT";
 

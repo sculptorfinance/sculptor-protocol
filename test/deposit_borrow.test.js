@@ -478,6 +478,10 @@ describe("Lending Pool and Stake Locked Sculpt Token", function () {
     // const platformFee = await multifeedistributor.claimableRewards(user1.address);
     // console.log(452, platformFee.toString());
 
+    // increase block timestamp
+    await network.provider.send("evm_increaseTime", [21600]);
+    await network.provider.send("evm_mine");
+
     // claimable reward
     await multifeedistributor.connect(user1).getReward();
     const platformFee2 = await multifeedistributor.claimableRewards(user1.address);

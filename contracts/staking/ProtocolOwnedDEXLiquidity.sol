@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity 0.7.6;
+pragma abicoder v2;
 
 import "../dependencies/openzeppelin/contracts/SafeMath.sol";
 import "../dependencies/openzeppelin/contracts/IERC20.sol";
@@ -25,7 +26,19 @@ interface IUniswapLPToken {
 }
 
 interface IMultiFeeDistribution {
-    function lockedBalances(address user) view external returns (uint256);
+    struct LockedBalance {
+        uint256 amount;
+        uint256 unlockTime;
+    }
+
+    function lockedBalances(
+        address user
+    ) view external returns (
+        uint256 total,
+        uint256 unlockable,
+        uint256 locked,
+        LockedBalance[] memory lockData
+    );
     function lockedSupply() external view returns (uint256);
 }
 
@@ -110,7 +123,7 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         UserRecord storage u = userData[_user];
         if (u.nextClaimTime > block.timestamp) return 0;
         uint available = availableBNB();
-        uint userLocked = treasury.lockedBalances(_user);
+        (,uint256 userLocked, ,) = treasury.lockedBalances(_user);
         uint totalLocked = treasury.lockedSupply();
         uint amount = available.mul(lockedBalanceMultiplier).mul(userLocked).div(totalLocked);
         if (amount > available) {
@@ -149,7 +162,8 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
     }
 
     function superPODL(uint256 _amount) public notContract {
-        require(treasury.lockedBalances(msg.sender) >= minSuperPODLLock, "Need to lock SCULP!");
+        (,uint256 lock, ,) = treasury.lockedBalances(msg.sender);
+        require(lock >= minSuperPODLLock, "Need to lock SCULP!");
         _buy(_amount, superPODLCooldown);
         emit AaaaaaahAndImSuperPODLiiiiing(msg.sender, _amount);
     }

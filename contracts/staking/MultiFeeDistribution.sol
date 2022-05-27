@@ -282,7 +282,7 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     // Minted tokens receive rewards normally but incur a 50% penalty when
     // withdrawn before lockDuration has passed.
     function mint(address user, uint256 amount, bool withPenalty) external override updateReward(user) {
-        require(minters[msg.sender]);
+        require(minters[msg.sender], "Only minter!");
         if (amount == 0) return;
         totalSupply = totalSupply.add(amount);
         Balances storage bal = balances[user];
@@ -379,7 +379,7 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     }
 
     // Claim all pending staking rewards
-    function getReward() public override nonReentrant updateReward(msg.sender) {
+    function getReward() public override updateReward(msg.sender) {
         for (uint i; i < rewardTokens.length; i++) {
             address token = rewardTokens[i];
             uint256 reward = rewards[msg.sender][token];
@@ -404,7 +404,7 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     }
 
     // Withdraw full unlocked balance and claim pending rewards
-    function exit() external override updateReward(msg.sender) {
+    function exit() external override nonReentrant updateReward(msg.sender) {
         (uint256 amount, uint256 penaltyAmount) = withdrawableBalance(msg.sender);
         delete userEarnings[msg.sender];
         Balances storage bal = balances[msg.sender];
@@ -421,7 +421,7 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     }
 
     // Withdraw all currently locked tokens where the unlock time has passed
-    function withdrawExpiredLocks() external override updateReward(msg.sender) {
+    function withdrawExpiredLocks() external override nonReentrant updateReward(msg.sender) {
         LockedBalance[] storage locks = userLocks[msg.sender];
         Balances storage bal = balances[msg.sender];
         uint256 amount;
