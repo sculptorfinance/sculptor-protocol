@@ -16,7 +16,6 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
     struct UserInfo {
         uint256 shares;
         uint256 unlockTime;
-        uint256 rewardPaid;
     }
 
     struct LockInfo {
@@ -39,7 +38,7 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
     uint256 public maxRewardSupply;
     uint256 public sharesTotal;
 
-    mapping(address => bool) private userRewardPaid;
+    mapping(address => bool) public userRewardPaid;
     mapping(address => uint256) private userBalances;
 
     constructor(
@@ -81,8 +80,8 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
         return balances;
     }
 
-    function availableLockToken(address _user) public view returns (uint256)  {
-        (, ,uint256 avl, , ,) = ILendingPool(lendingPool).getUserAccountData(_user);
+    function availableLockToken(address user) public view returns (uint256)  {
+        (, ,uint256 avl, , ,) = ILendingPool(lendingPool).getUserAccountData(user);
         return avl;
     }
 
@@ -105,8 +104,8 @@ contract SculptorLockDrop is Ownable, ReentrancyGuard {
         maxRewardSupply = _amount;
     }
 
-    function calculateRewardPaid(address _user) external view returns (uint256) {
-        uint256 reward = _userRewardWeight(_user);
+    function calculateRewardPaid(address user) external view returns (uint256) {
+        uint256 reward = _userRewardWeight(user);
         return reward;
     }
 

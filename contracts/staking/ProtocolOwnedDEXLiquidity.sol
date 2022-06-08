@@ -138,6 +138,12 @@ contract ProtocolOwnedDEXLiquidity is Ownable {
         return totalSupply.mul(1e18).mul(45).div(reserve0).div(100);
     }
 
+    function _sculptPrice() public view returns (uint256) {
+        uint totalSupply = lpToken.totalSupply();
+        (uint reserve0,,) = lpToken.getReserves();
+        return totalSupply.mul(1e18).mul(45).div(reserve0).div(100);
+    }
+
     function _buy(uint _amount, uint _cooldownTime) internal {
         require(_amount >= minBuyAmount, "Below min buy amount");
 
