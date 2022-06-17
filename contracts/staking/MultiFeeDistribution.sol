@@ -73,8 +73,6 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     mapping(address => LockedBalance[]) private userLocks;
     mapping(address => LockedBalance[]) private userEarnings;
 
-
-
     /* ========== CONSTRUCTOR ========== */
 
     constructor(address _stakingToken) Ownable() {
@@ -345,7 +343,8 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
             require(bal.earned >= remaining, "Insufficient unlocked balance");
             bal.unlocked = 0;
             bal.earned = bal.earned.sub(remaining);
-            for (uint i = 0; ; i++) {
+            uint arrrLength = userEarnings[msg.sender].length;
+            for (uint i = 0; i < arrrLength; i++) {
                 uint256 earnedAmount = userEarnings[msg.sender][i].amount;
                 if (earnedAmount == 0) continue;
                 if (penaltyAmount == 0 && userEarnings[msg.sender][i].unlockTime > block.timestamp) {
@@ -379,54 +378,7 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
     }
 
     // Claim all pending staking rewards
-    function getReward() public override nonReentrant {
-        _getReward();
-    }
-
-    // Withdraw full unlocked balance and claim pending rewards
-    function exit() external override nonReentrant updateReward(msg.sender) {
-        (uint256 amount, uint256 penaltyAmount) = withdrawableBalance(msg.sender);
-        delete userEarnings[msg.sender];
-        Balances storage bal = balances[msg.sender];
-        bal.total = bal.total.sub(bal.unlocked).sub(bal.earned);
-        bal.unlocked = 0;
-        bal.earned = 0;
-
-        totalSupply = totalSupply.sub(amount.add(penaltyAmount));
-        stakingToken.safeTransfer(msg.sender, amount);
-        if (penaltyAmount > 0) {
-            _notifyReward(address(stakingToken), penaltyAmount);
-        }
-        _getReward();
-    }
-
-    // Withdraw all currently locked tokens where the unlock time has passed
-    function withdrawExpiredLocks() external override nonReentrant updateReward(msg.sender) {
-        LockedBalance[] storage locks = userLocks[msg.sender];
-        Balances storage bal = balances[msg.sender];
-        uint256 amount;
-        uint256 length = locks.length;
-        if (locks[length-1].unlockTime <= block.timestamp) {
-            amount = bal.locked;
-            delete userLocks[msg.sender];
-        } else {
-            for (uint i = 0; i < length; i++) {
-                if (locks[i].unlockTime > block.timestamp) break;
-                amount = amount.add(locks[i].amount);
-                delete locks[i];
-            }
-        }
-        bal.locked = bal.locked.sub(amount);
-        bal.total = bal.total.sub(amount);
-        totalSupply = totalSupply.sub(amount);
-        lockedSupply = lockedSupply.sub(amount);
-        stakingToken.safeTransfer(msg.sender, amount);
-    }
-
-    /* ========== RESTRICTED FUNCTIONS ========== */
-
-    // Claim all pending staking rewards
-    function _getReward() internal updateReward(msg.sender) {
+    function getReward() public nonReentrant updateReward(msg.sender) {
         for (uint i; i < rewardTokens.length; i++) {
             address token = rewardTokens[i];
             uint256 reward = rewards[msg.sender][token];
@@ -449,6 +401,49 @@ contract MultiFeeDistribution is IMultiFeeDistribution, ReentrancyGuard, Ownable
             emit RewardPaid(msg.sender, token, reward);
         }
     }
+
+    // Withdraw full unlocked balance and claim pending rewards
+    function exit() external override updateReward(msg.sender) {
+        (uint256 amount, uint256 penaltyAmount) = withdrawableBalance(msg.sender);
+        delete userEarnings[msg.sender];
+        Balances storage bal = balances[msg.sender];
+        bal.total = bal.total.sub(bal.unlocked).sub(bal.earned);
+        bal.unlocked = 0;
+        bal.earned = 0;
+
+        totalSupply = totalSupply.sub(amount.add(penaltyAmount));
+        stakingToken.safeTransfer(msg.sender, amount);
+        if (penaltyAmount > 0) {
+            _notifyReward(address(stakingToken), penaltyAmount);
+        }
+        getReward();
+    }
+
+    // Withdraw all currently locked tokens where the unlock time has passed
+    function withdrawExpiredLocks() external override nonReentrant updateReward(msg.sender) {
+        LockedBalance[] storage locks = userLocks[msg.sender];
+        Balances storage bal = balances[msg.sender];
+        uint256 amount;
+        uint256 length = locks.length;
+        if (locks[length-1].unlockTime <= block.timestamp) {
+            amount = bal.locked;
+            delete userLocks[msg.sender];
+        } else {
+            for (uint i = 0; i < length; i++) {
+                if (locks[i].unlockTime > block.timestamp) break;
+                amount = amount.add(locks[i].amount);
+                delete locks[i];
+            }
+        }
+
+        bal.locked = bal.locked.sub(amount);
+        bal.total = bal.total.sub(amount);
+        totalSupply = totalSupply.sub(amount);
+        lockedSupply = lockedSupply.sub(amount);
+        stakingToken.safeTransfer(msg.sender, amount);
+    }
+
+    /* ========== RESTRICTED FUNCTIONS ========== */
 
     function _notifyReward(address _rewardsToken, uint256 reward) internal {
         if (block.timestamp >= rewardData[_rewardsToken].periodFinish) {

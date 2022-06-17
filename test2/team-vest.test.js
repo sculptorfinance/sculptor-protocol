@@ -332,21 +332,21 @@ describe("Token team vesting", function () {
     const addrList = [sDaiAddr,varDaiAddr,sFtmAddr,varFtmAddr];
     await incentive.claim(user1.address, addrList);
     await multifeedistributor.connect(user1).exit();
+    // await multifeedistributor.connect(user1).getReward();
 
-
-    // // increase block timestamp
-    // await network.provider.send("evm_increaseTime", [86400*30]);
-    // await network.provider.send("evm_mine");
+    // increase block timestamp
+    await network.provider.send("evm_increaseTime", [86400]);
+    await network.provider.send("evm_mine");
 
     // vest send to multifee
     const sct3bf = await sculptorToken.balanceOf(user3.address);
     const u3vest = await teamvest.claimable(user3.address);
     console.log(331, u3vest.toString());
 
-    await teamvest.connect(user3).claim(user3.address);
-    await multifeedistributor.connect(user3).exit();
-    const sct3af = await sculptorToken.balanceOf(user3.address);
-    console.log("Sculptor compare vest ====> ", sct3bf.toString(), sct3af.toString());
+    // await teamvest.connect(user3).claim(user3.address);
+    // await multifeedistributor.connect(user3).exit();
+    // const sct3af = await sculptorToken.balanceOf(user3.address);
+    // console.log("Sculptor compare vest ====> ", sct3bf.toString(), sct3af.toString());
 
 
     // // increase block timestamp
